@@ -1,0 +1,208 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Join us to celebrate our wedding day." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} — Our Wedding</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <nav class="nav">
+          <a href="/" class="nav-brand">
+            <span class="nav-brand-names">Eleanor &amp; Theodore</span>
+            <span class="nav-brand-date">June 14, 2025</span>
+          </a>
+          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/our-story">Our Story</a></li>
+            <li><a href="/schedule">Schedule</a></li>
+            <li><a href="/travel">Travel</a></li>
+            <li><a href="/attire">Attire</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/registry">Registry</a></li>
+            <li><a href="/rsvp" class="nav-rsvp">RSVP</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-diamond"></div>
+            <div class="divider-line"></div>
+          </div>
+          <p class="footer-names">Eleanor &amp; Theodore</p>
+          <p class="footer-date">June 14, 2025 · Hudson Valley, New York</p>
+          <p class="footer-note">We can't wait to celebrate with you.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* ── Header ── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--swan-white);
+    border-bottom: 1px solid var(--swan-sand);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+    gap: 2rem;
+  }
+
+  .nav-brand {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-brand-names {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--swan-forest);
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+  }
+  .nav-brand-date {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--swan-olive);
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--swan-brown);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--swan-forest); }
+
+  .nav-rsvp {
+    border: 1.5px solid var(--swan-forest) !important;
+    padding: 0.4rem 1rem;
+    color: var(--swan-forest) !important;
+    transition: all 0.2s !important;
+  }
+  .nav-rsvp:hover {
+    background: var(--swan-forest);
+    color: var(--swan-cream) !important;
+  }
+
+  /* ── Mobile toggle ── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--swan-forest);
+    transition: all 0.2s;
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: var(--swan-forest);
+    padding: 3rem 0;
+    margin-top: 4rem;
+  }
+  .footer-inner {
+    text-align: center;
+  }
+  .footer-inner .divider-line { background: rgba(234,236,197,0.2); }
+  .footer-inner .divider-diamond { background: var(--swan-blush); }
+
+  .footer-names {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--swan-cream);
+    margin: 1rem 0 0.2rem;
+  }
+  .footer-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--swan-sand);
+    margin-bottom: 0.5rem;
+  }
+  .footer-note {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: rgba(234,236,197,0.6);
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--swan-white);
+      flex-direction: column;
+      padding: 1.5rem 2rem;
+      gap: 1.2rem;
+      border-bottom: 1px solid var(--swan-sand);
+      align-items: flex-start;
+    }
+    .nav-links.open { display: flex; }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle?.addEventListener('click', () => {
+    links?.classList.toggle('open');
+  });
+</script>

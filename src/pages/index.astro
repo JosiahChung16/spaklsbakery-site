@@ -1,0 +1,309 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="section-label">A Wedding Celebration</span>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <h1 class="hero-names">
+        Eleanor<span class="hero-amp">&amp;</span>Theodore
+      </h1>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <p class="hero-date">Saturday, the Fourteenth of June, 2025</p>
+      <p class="hero-location">The Swan Estate · Hudson Valley, New York</p>
+      <div class="hero-actions">
+        <a href="/rsvp" class="btn btn-filled">Confirm Attendance</a>
+        <a href="/schedule" class="btn">View Schedule</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS STRIP -->
+  <section class="details-strip">
+    <div class="container">
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="section-label">Ceremony</span>
+          <div class="detail-value">4:00 PM</div>
+          <div class="detail-sub">The East Garden Pavilion</div>
+        </div>
+        <div class="detail-divider"></div>
+        <div class="detail-item">
+          <span class="section-label">Cocktail Hour</span>
+          <div class="detail-value">4:45 PM</div>
+          <div class="detail-sub">The Veranda</div>
+        </div>
+        <div class="detail-divider"></div>
+        <div class="detail-item">
+          <span class="section-label">Reception</span>
+          <div class="detail-value">6:00 PM</div>
+          <div class="detail-sub">The Grand Ballroom</div>
+        </div>
+        <div class="detail-divider"></div>
+        <div class="detail-item">
+          <span class="section-label">Dress Code</span>
+          <div class="detail-value">Garden Formal</div>
+          <div class="detail-sub">Soft tones &amp; florals welcome</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PALETTE STRIP -->
+  <div class="palette-strip">
+    <div class="palette-swatch" style="background:#BED2BC"></div>
+    <div class="palette-swatch" style="background:#EAECC5"></div>
+    <div class="palette-swatch" style="background:#C8BE8C"></div>
+    <div class="palette-swatch" style="background:#B4924C"></div>
+    <div class="palette-swatch" style="background:#C08480"></div>
+    <div class="palette-swatch" style="background:#706E3F"></div>
+    <div class="palette-swatch" style="background:#5D5050"></div>
+    <div class="palette-swatch" style="background:#494E3C"></div>
+  </div>
+
+  <!-- STORY TEASER -->
+  <section class="section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text">
+          <span class="section-label">Our Story</span>
+          <h2>A Love Worth Telling</h2>
+          <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-diamond"></div>
+            <div class="divider-line"></div>
+          </div>
+          <p>It began with a borrowed umbrella and a missed train — and somewhere between the argument about Fitzgerald and the walk home in the rain, something quietly and irrevocably changed.</p>
+          <p>We have been together ever since, disagreeing warmly about the kitchen clock and agreeing on nearly everything that matters.</p>
+          <a href="/our-story" class="btn">Read Our Story</a>
+        </div>
+        <div class="story-ornament">
+          <div class="ornament-box">
+            <div class="ornament-corner tl"></div>
+            <div class="ornament-corner tr"></div>
+            <div class="ornament-corner bl"></div>
+            <div class="ornament-corner br"></div>
+            <span class="ornament-year">2025</span>
+            <span class="ornament-label">Hudson Valley</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP CTA -->
+  <section class="rsvp-cta">
+    <div class="container">
+      <div class="rsvp-cta-inner">
+        <span class="section-label" style="color:var(--swan-sand)">You're Invited</span>
+        <h2 style="color:var(--swan-cream)">Kindly Confirm Your Attendance</h2>
+        <p style="color:rgba(234,236,197,0.75)">Please respond by May 1st, 2025. Your unique invitation code was printed on your envelope.</p>
+        <a href="/rsvp" class="btn" style="border-color:var(--swan-cream); color:var(--swan-cream);">
+          RSVP Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--swan-white);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 1px solid var(--swan-sand);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 22px;
+    border: 1px dotted var(--swan-sage);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+  .hero-names {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    color: var(--swan-forest);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin: 0.5rem 0;
+  }
+  .hero-amp {
+    display: block;
+    font-size: 0.55em;
+    color: var(--swan-blush);
+    font-style: italic;
+    margin: 0.1em 0;
+  }
+  .hero-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--swan-brown);
+    margin-bottom: 0.2rem;
+  }
+  .hero-location {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--swan-olive);
+    margin-bottom: 2rem;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* DETAILS STRIP */
+  .details-strip {
+    background: var(--swan-forest);
+    padding: 2.5rem 0;
+  }
+  .details-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .detail-item {
+    text-align: center;
+    padding: 0.5rem 2.5rem;
+    flex: 1;
+    min-width: 160px;
+  }
+  .detail-item .section-label { color: var(--swan-sage); }
+  .detail-value {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--swan-cream);
+    line-height: 1.2;
+  }
+  .detail-sub {
+    font-size: 0.72rem;
+    color: var(--swan-sand);
+    letter-spacing: 0.08em;
+  }
+  .detail-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(200,190,140,0.3);
+    flex-shrink: 0;
+  }
+
+  /* PALETTE STRIP */
+  .palette-strip {
+    display: flex;
+    height: 8px;
+  }
+  .palette-swatch { flex: 1; }
+
+  /* STORY */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .story-text h2 { margin-bottom: 0.5rem; }
+  .story-text p { color: var(--swan-brown); font-size: 0.95rem; }
+  .story-text .btn { margin-top: 1.5rem; }
+
+  .story-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ornament-box {
+    width: 220px;
+    height: 220px;
+    border: 2px solid var(--swan-forest);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--swan-cream);
+  }
+  .ornament-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: var(--swan-gold);
+    border-style: solid;
+  }
+  .ornament-corner.tl { top: 6px; left: 6px; border-width: 1.5px 0 0 1.5px; }
+  .ornament-corner.tr { top: 6px; right: 6px; border-width: 1.5px 1.5px 0 0; }
+  .ornament-corner.bl { bottom: 6px; left: 6px; border-width: 0 0 1.5px 1.5px; }
+  .ornament-corner.br { bottom: 6px; right: 6px; border-width: 0 1.5px 1.5px 0; }
+
+  .ornament-year {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--swan-forest);
+    line-height: 1;
+  }
+  .ornament-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--swan-olive);
+    margin-top: 0.3rem;
+  }
+
+  /* RSVP CTA */
+  .rsvp-cta {
+    background: var(--swan-blush);
+    padding: 5rem 0;
+    text-align: center;
+  }
+  .rsvp-cta-inner { max-width: 560px; margin: 0 auto; }
+  .rsvp-cta-inner h2 { margin-bottom: 0.8rem; }
+  .rsvp-cta-inner p { margin-bottom: 2rem; font-size: 0.9rem; }
+  .rsvp-cta .btn:hover {
+    background: var(--swan-cream);
+    color: var(--swan-forest) !important;
+    border-color: var(--swan-cream) !important;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .story-ornament { display: none; }
+    .detail-divider { display: none; }
+    .detail-item { min-width: 140px; }
+  }
+</style>
