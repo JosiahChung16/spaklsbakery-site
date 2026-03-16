@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RSVPForm from '../../components/RSVPForm';
+---
+
+<Layout title="RSVP — Confirm">
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Your Invitation</span>
+      <h1>RSVP</h1>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="confirm-wrap">
+        <RSVPForm client:load />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .confirm-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+</style>

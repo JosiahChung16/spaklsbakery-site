@@ -1,158 +1,182 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
-
-/* ── Swan Theme Variables ── */
-:root {
-  --swan-sage:    #BED2BC;
-  --swan-brown:   #5D5050;
-  --swan-sand:    #C8BE8C;
-  --swan-blush:   #C08480;
-  --swan-forest:  #494E3C;
-  --swan-cream:   #EAECC5;
-  --swan-gold:    #B4924C;
-  --swan-olive:   #706E3F;
-  --swan-bg:      #F4F2E8;
-  --swan-white:   #FDFAF3;
-
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Jost', sans-serif;
+/* ── RSVP Form Styles ── */
+.rsvp-form-wrap {
+  background: var(--swan-white);
+  border: 1px solid var(--swan-sand);
+  padding: 2.5rem;
 }
 
-/* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { font-size: 16px; scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  background: var(--swan-bg);
-  color: var(--swan-forest);
-  font-weight: 300;
-  line-height: 1.7;
-  min-height: 100vh;
-}
-
-/* ── Typography ── */
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--swan-forest);
-}
-
-h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
-h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
-h3 { font-size: clamp(1.3rem, 2vw, 1.8rem); }
-
-p { margin-bottom: 1rem; }
-p:last-child { margin-bottom: 0; }
-
-a { color: var(--swan-olive); text-decoration: none; }
-a:hover { color: var(--swan-gold); }
-
-/* ── Utility Classes ── */
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.section {
-  padding: 5rem 0;
-}
-
-.section-label {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--swan-olive);
-  margin-bottom: 0.8rem;
-  display: block;
-}
-
-.divider {
+.guest-badge {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
+  text-align: center;
+  background: var(--swan-cream);
+  border: 1px solid var(--swan-sand);
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
 }
-.divider-line {
-  flex: 1;
-  height: 1px;
-  background: var(--swan-sand);
-}
-.divider-diamond {
-  width: 6px;
-  height: 6px;
-  background: var(--swan-blush);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-
-/* ── Buttons ── */
-.btn {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 0.85rem 2.2rem;
-  border: 1.5px solid var(--swan-forest);
-  color: var(--swan-forest);
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.btn:hover {
-  background: var(--swan-forest);
-  color: var(--swan-cream);
-}
-.btn-filled {
-  background: var(--swan-forest);
-  color: var(--swan-cream);
-}
-.btn-filled:hover {
-  background: var(--swan-olive);
-  color: var(--swan-cream);
-  border-color: var(--swan-olive);
-}
-
-/* ── Form Elements ── */
-.form-group { margin-bottom: 1.2rem; }
-
-.form-label {
-  display: block;
+.guest-badge-label {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--swan-olive);
-  margin-bottom: 0.4rem;
 }
-
-.form-input {
-  width: 100%;
-  background: var(--swan-white);
-  border: 1.5px solid var(--swan-sand);
-  padding: 0.75rem 1rem;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
+.guest-badge-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
   color: var(--swan-forest);
-  outline: none;
-  transition: border-color 0.2s;
+  line-height: 1.2;
 }
-.form-input:focus { border-color: var(--swan-olive); }
+.guest-badge-guests {
+  font-size: 0.75rem;
+  color: var(--swan-brown);
+  letter-spacing: 0.08em;
+}
 
-/* ── Page Header ── */
-.page-header {
+.rsvp-step h2 { margin-bottom: 1.5rem; }
+
+.attendance-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.attendance-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  border: 1.5px solid var(--swan-sand);
+  background: var(--swan-white);
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 4px;
+}
+.attendance-btn:hover { border-color: var(--swan-forest); }
+.attendance-btn.selected {
+  border-color: var(--swan-forest);
+  background: var(--swan-forest);
+}
+.attendance-btn.selected .attendance-btn-title,
+.attendance-btn.selected .attendance-btn-sub {
+  color: var(--swan-cream);
+}
+.attendance-btn-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--swan-forest);
+}
+.attendance-btn-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--swan-brown);
+}
+
+.guest-counter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.counter-btn {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--swan-forest);
+  background: transparent;
+  font-size: 1.2rem;
+  color: var(--swan-forest);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.counter-btn:hover { background: var(--swan-forest); color: var(--swan-cream); }
+.counter-value {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--swan-forest);
+  min-width: 32px;
   text-align: center;
-  padding: 5rem 2rem 3rem;
-  background: var(--swan-white);
-  border-bottom: 1px solid var(--swan-sand);
+}
+.counter-max {
+  font-size: 0.75rem;
+  color: var(--swan-brown);
+  letter-spacing: 0.08em;
 }
 
-/* ── Cards ── */
-.card {
-  background: var(--swan-white);
-  border: 1px solid var(--swan-sand);
-  padding: 2rem;
+.meal-choices {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.meal-btn {
+  padding: 0.5rem 1.4rem;
+  border: 1.5px solid var(--swan-sand);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--swan-brown);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.meal-btn:hover { border-color: var(--swan-forest); color: var(--swan-forest); }
+.meal-btn.selected {
+  background: var(--swan-forest);
+  border-color: var(--swan-forest);
+  color: var(--swan-cream);
+}
+
+.meal-hint {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--swan-brown);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.step-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.step-actions .btn { flex: 1; text-align: center; }
+
+.error-msg {
+  display: none;
+  background: #f8e8e8;
+  border: 1px solid #d4a0a0;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: #8b3a3a;
+  margin-bottom: 1rem;
+}
+.error-msg.visible { display: block; }
+
+.rsvp-done { text-align: center; }
+.done-diamond {
+  font-size: 2rem;
+  color: var(--swan-blush);
+  margin-bottom: 1rem;
+}
+.rsvp-done h2 { margin-bottom: 0.8rem; }
+.rsvp-done p {
+  color: var(--swan-brown);
+  font-size: 0.95rem;
+  max-width: 400px;
+  margin: 0 auto 0.5rem;
+}
+.done-email { font-size: 0.85rem !important; }
+.done-details {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--swan-olive);
+  margin: 1.5rem 0;
 }

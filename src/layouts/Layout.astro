@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 export interface Props {
   title: string;
   description?: string;
@@ -15,7 +17,6 @@ const { title, description = "Join us to celebrate our wedding day." } = Astro.p
     <meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow" />
     <title>{title} — Our Wedding</title>
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
     <header class="site-header">
