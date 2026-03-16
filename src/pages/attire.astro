@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Attire">
+
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Dress Code</span>
+      <h1>What to Wear</h1>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <p class="header-sub">We'd love for our guests to feel as beautiful as the setting.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="attire-grid">
+
+        <!-- DRESS CODE CARD -->
+        <div class="attire-card">
+          <span class="section-label">The Dress Code</span>
+          <h2>Garden Formal</h2>
+          <div class="divider">
+            <div class="divider-line"></div>
+            <div class="divider-diamond"></div>
+            <div class="divider-line"></div>
+          </div>
+          <p>Think refined garden party — elegant but not stiff. We invite you to embrace the beauty of the estate with thoughtful, polished attire that complements the natural surroundings.</p>
+          <ul class="attire-list">
+            <li>Suits, blazers, or dress trousers for gentlemen</li>
+            <li>Midi or maxi dresses, elegant separates, or dressy jumpsuits for ladies</li>
+            <li>Florals and soft patterns are warmly encouraged</li>
+            <li>Please avoid white, ivory, or black</li>
+          </ul>
+        </div>
+
+        <!-- PALETTE CARD -->
+        <div class="attire-card palette-card">
+          <span class="section-label">Dress Code — Garden Formal</span>
+          <div class="palette-circles">
+            <div class="palette-item">
+              <div class="palette-circle" style="background:#BED2BC; border-color:#BED2BC;"></div>
+              <span class="palette-name">Sage</span>
+            </div>
+            <div class="palette-item">
+              <div class="palette-circle" style="background:#EAECC5; border-color:#C8BE8C;"></div>
+              <span class="palette-name">Cream</span>
+            </div>
+            <div class="palette-item">
+              <div class="palette-circle" style="background:#C8BE8C; border-color:#C8BE8C;"></div>
+              <span class="palette-name">Sand</span>
+            </div>
+            <div class="palette-item">
+              <div class="palette-circle" style="background:#C08480; border-color:#C08480;"></div>
+              <span class="palette-name">Blush</span>
+            </div>
+            <div class="palette-item">
+              <div class="palette-circle" style="background:#B4924C; border-color:#B4924C;"></div>
+              <span class="palette-name">Gold</span>
+            </div>
+            <div class="palette-item">
+              <div class="palette-circle" style="background:#494E3C; border-color:#494E3C;"></div>
+              <span class="palette-name">Forest</span>
+            </div>
+          </div>
+          <p class="palette-note">We invite you to lean into soft, earthy tones that complement the estate gardens. Florals and patterns are warmly welcome. Please avoid white, ivory, and black.</p>
+        </div>
+
+      </div>
+
+      <!-- ADDITIONAL NOTES -->
+      <div class="attire-notes">
+        <div class="attire-note-item">
+          <span class="section-label">Footwear</span>
+          <p>The ceremony and cocktail hour take place on grass and garden paths. We recommend block heels, wedges, or flats for comfort.</p>
+        </div>
+        <div class="attire-note-divider"></div>
+        <div class="attire-note-item">
+          <span class="section-label">Weather</span>
+          <p>June evenings in Hudson Valley can be cool. We suggest bringing a light wrap or jacket for the later hours of the evening.</p>
+        </div>
+        <div class="attire-note-divider"></div>
+        <div class="attire-note-item">
+          <span class="section-label">Questions?</span>
+          <p>If you have any questions about attire, please don't hesitate to reach out directly and we'll be happy to help.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .header-sub {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--swan-brown);
+    max-width: 500px;
+    margin: 0.8rem auto 0;
+  }
+
+  .attire-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .attire-card {
+    background: var(--swan-white);
+    border: 1px solid var(--swan-sand);
+    padding: 2.5rem;
+  }
+  .attire-card h2 { margin-bottom: 0; }
+
+  .attire-list {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  .attire-list li {
+    font-size: 0.9rem;
+    color: var(--swan-brown);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--swan-sand);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .attire-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    font-size: 0.5rem;
+    color: var(--swan-blush);
+    top: 0.75rem;
+  }
+
+  /* ── Palette Card ── */
+  .palette-card {
+    background: var(--swan-cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .palette-circles {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .palette-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .palette-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .palette-name {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--swan-brown);
+  }
+
+  .palette-note {
+    font-size: 0.85rem;
+    color: var(--swan-brown);
+    line-height: 1.7;
+    max-width: 340px;
+    margin: 0 !important;
+  }
+
+  /* ── Additional Notes ── */
+  .attire-notes {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--swan-white);
+    border: 1px solid var(--swan-sand);
+    padding: 2.5rem;
+  }
+
+  .attire-note-item {
+    flex: 1;
+    padding: 0 2rem;
+  }
+  .attire-note-item:first-child { padding-left: 0; }
+  .attire-note-item:last-child { padding-right: 0; }
+  .attire-note-item p {
+    font-size: 0.88rem;
+    color: var(--swan-brown);
+    margin: 0;
+  }
+
+  .attire-note-divider {
+    width: 1px;
+    background: var(--swan-sand);
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .attire-grid { grid-template-columns: 1fr; }
+    .attire-notes { flex-direction: column; gap: 2rem; }
+    .attire-note-item { padding: 0 !important; }
+    .attire-note-divider { width: 100%; height: 1px; }
+  }
+</style>
