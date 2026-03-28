@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Registry">
+
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Registry</span>
+      <h1>A Gift of Kindness</h1>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <p class="header-sub">Your presence at our wedding is the greatest gift of all. For those who wish to give, we are grateful for your generosity.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- INTRO TEXT -->
+      <div class="registry-intro">
+        <p>We have chosen to forgo a traditional registry in favour of building our life together. Any contribution toward our future — whether a honeymoon adventure, a home, or a quiet dinner — means the world to us.</p>
+      </div>
+
+      <!-- VIDEO CARD -->
+      <div class="video-card">
+        <span class="section-label">Not Sure What to Give?</span>
+        <h2 class="video-heading">Watch Our Registry Message</h2>
+        <p class="video-prompt">▶ Click the video below — we share a little about what we're dreaming of and how your gift will help make it happen.</p>
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/Nbe_rtee1wI?rel=0&modestbranding=1"
+            title="A message from Eleanor and Theodore"
+            frameborder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- PAYMENT OPTIONS -->
+      <div class="payment-grid">
+
+        <!-- VENMO -->
+        <div class="payment-card">
+          <div class="payment-icon venmo-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19.7 2c.5.8.7 1.7.7 2.8 0 3.5-3 8-5.4 11.2H9.6L7 2.6l4.7-.4 1.3 10.2c1.2-2 2.7-5.1 2.7-7.2 0-1.2-.2-2-.5-2.7L19.7 2z"/>
+            </svg>
+          </div>
+          <span class="section-label">Venmo</span>
+          <div class="payment-handle">@Josiah-Chung-1</div>
+          <p class="payment-note">Tap the button below to open Venmo, or search for our handle directly in the app.</p>
+          <a
+            href="https://venmo.com/Josiah-Chung-1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-filled payment-btn"
+          >
+            Send via Venmo
+          </a>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="payment-or">
+          <div class="or-line"></div>
+          <span class="or-text">or</span>
+          <div class="or-line"></div>
+        </div>
+
+        <!-- ZELLE -->
+        <div class="payment-card">
+          <div class="payment-icon zelle-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.5 2H21v2.5l-9.5 12H21V19h-7.7l.2 3H11l-.2-3H3v-2.5l9.5-12H3V2h8.3L11 2h2.5z"/>
+            </svg>
+          </div>
+          <span class="section-label">Zelle</span>
+          <div class="payment-handle">423-457-1216</div>
+          <p class="payment-note">Open your banking app, navigate to Zelle, and send to our phone number directly.</p>
+          <a
+            href="https://enroll.zellepay.com/qr-codes?data=ewogICJuYW1lIjogIkpvc2lhaCBDaHVuZyIsCiAgImFjdGlvbiI6ICJwYXltZW50IiwKICAidG9rZW4iOiAiNDIzNDU3MTIxNiIKfQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-filled payment-btn"
+          >
+            Send via Zelle
+          </a>
+        </div>
+
+      </div>
+
+      <!-- CLOSING NOTE -->
+      <div class="registry-closing">
+        <div class="divider">
+          <div class="divider-line"></div>
+          <div class="divider-diamond"></div>
+          <div class="divider-line"></div>
+        </div>
+        <p>If you'd prefer to send a card or gift by post, please reach out and we'll share our mailing address. Thank you, from the bottom of our hearts.</p>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .header-sub {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--swan-brown);
+    max-width: 560px;
+    margin: 0.8rem auto 0;
+  }
+
+  /* ── Intro ── */
+  .registry-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3.5rem;
+    color: var(--swan-brown);
+    font-size: 0.95rem;
+  }
+
+  /* ── Video Card ── */
+  .video-card {
+    background: var(--swan-cream);
+    border: 1px solid var(--swan-sand);
+    padding: 2.5rem;
+    margin-bottom: 3.5rem;
+    text-align: center;
+  }
+  .video-heading {
+    margin: 0.3rem 0 0;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+  }
+  .video-prompt {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--swan-brown);
+    font-size: 1rem;
+    margin: 0.6rem 0 1.5rem !important;
+  }
+
+  .video-wrap {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+  }
+  .video-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ── Payment Grid ── */
+  .payment-grid {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .payment-card {
+    flex: 1;
+    background: var(--swan-white);
+    border: 1px solid var(--swan-sand);
+    padding: 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .payment-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+  }
+  .payment-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .venmo-icon {
+    background: #3D95CE;
+    color: white;
+  }
+  .zelle-icon {
+    background: #6D1ED4;
+    color: white;
+  }
+
+  .payment-handle {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--swan-forest);
+    letter-spacing: 0.02em;
+  }
+
+  .payment-note {
+    font-size: 0.82rem;
+    color: var(--swan-brown);
+    line-height: 1.6;
+    max-width: 240px;
+    margin: 0 !important;
+  }
+
+  .payment-btn {
+    margin-top: 0.5rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ── Or divider ── */
+  .payment-or {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .or-line {
+    width: 1px;
+    height: 60px;
+    background: var(--swan-sand);
+  }
+  .or-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--swan-brown);
+  }
+
+  /* ── Closing ── */
+  .registry-closing {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+    color: var(--swan-brown);
+    font-size: 0.88rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .payment-grid {
+      flex-direction: column;
+    }
+    .payment-card { width: 100%; }
+    .payment-or {
+      flex-direction: row;
+      width: 100%;
+    }
+    .or-line {
+      width: 100%;
+      height: 1px;
+    }
+  }
+</style>
