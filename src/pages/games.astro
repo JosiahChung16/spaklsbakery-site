@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const games = [
+  {
+    name: "Wordle",
+    description: "Guess the five-letter word in six tries. A new puzzle every day.",
+    url: "https://www.nytimes.com/games/wordle/index.html",
+    emoji: "🟩",
+    label: "Word Game",
+    color: "#6aaa64",
+  },
+  {
+    name: "Connections",
+    description: "Find groups of four words that share something in common.",
+    url: "https://www.nytimes.com/games/connections",
+    emoji: "🟪",
+    label: "Grouping",
+    color: "#b967c7",
+  },
+  {
+    name: "Mini Crossword",
+    description: "A quick 5×5 crossword puzzle. A perfect coffee-break challenge.",
+    url: "https://www.nytimes.com/crosswords/game/mini",
+    emoji: "✏️",
+    label: "Crossword",
+    color: "#4a7fa5",
+  },
+  {
+    name: "Spelling Bee",
+    description: "How many words can you make from 7 letters? Find them all to reach Queen Bee.",
+    url: "https://www.nytimes.com/puzzles/spelling-bee",
+    emoji: "🐝",
+    label: "Word Building",
+    color: "#f7da21",
+  },
+  {
+    name: "Strands",
+    description: "Find the hidden theme and fill the board with connected words.",
+    url: "https://www.nytimes.com/games/strands",
+    emoji: "🔵",
+    label: "Word Search",
+    color: "#4e91d2",
+  },
+  {
+    name: "The Crossword",
+    description: "The full New York Times crossword — the gold standard of puzzles.",
+    url: "https://www.nytimes.com/crosswords",
+    emoji: "📰",
+    label: "Crossword",
+    color: "#B4924C",
+  },
+];
+---
+
+<Layout title="Games">
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-label">Take a Break</span>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <h1>Games</h1>
+      <p class="header-sub">
+        While you're waiting for the big day, enjoy some of our favorite puzzles
+        from the New York Times. Click any game below to play!
+      </p>
+    </div>
+  </section>
+
+  <!-- GAMES GRID -->
+  <section class="section">
+    <div class="container">
+      <div class="games-grid">
+        {games.map((game) => (
+          <a
+            href={game.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="game-card"
+            style={`--accent: ${game.color};`}
+          >
+            <div class="card-top">
+              <span class="card-emoji">{game.emoji}</span>
+              <span class="card-label">{game.label}</span>
+            </div>
+            <h3 class="card-name">{game.name}</h3>
+            <p class="card-desc">{game.description}</p>
+            <div class="card-cta">
+              Play Now <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- NOTE -->
+      <div class="note">
+        <div class="divider">
+          <div class="divider-line"></div>
+          <div class="divider-diamond"></div>
+          <div class="divider-line"></div>
+        </div>
+        <p>
+          Some NYT games require a free account or subscription to play.
+          All games open in a new tab.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ── Page Header ── */
+  .page-header {
+    background: var(--swan-forest);
+    padding: 5rem 0 4rem;
+    text-align: center;
+  }
+  .page-header .section-label {
+    color: var(--swan-sand);
+  }
+  .page-header .divider-line { background: rgba(234,236,197,0.2); }
+  .page-header .divider-diamond { background: var(--swan-blush); }
+  .page-header h1 {
+    color: var(--swan-cream);
+    margin-bottom: 1rem;
+  }
+  .header-sub {
+    color: rgba(234,236,197,0.75);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Games Grid ── */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+
+  .game-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--swan-white);
+    border: 1px solid var(--swan-sand);
+    border-radius: 4px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--swan-forest);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--accent, var(--swan-gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(73, 78, 60, 0.12);
+    border-color: var(--swan-sage);
+    color: var(--swan-forest);
+  }
+  .game-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+  }
+  .card-emoji {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .card-label {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--swan-olive);
+    background: var(--swan-cream);
+    border: 1px solid var(--swan-sand);
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .card-name {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    color: var(--swan-forest);
+    margin-bottom: 0.6rem;
+    line-height: 1.1;
+  }
+
+  .card-desc {
+    font-size: 0.88rem;
+    color: var(--swan-brown);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+
+  .card-cta {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--swan-olive);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .game-card:hover .card-cta {
+    color: var(--swan-gold);
+    gap: 0.7rem;
+  }
+  .arrow {
+    font-size: 0.9rem;
+    transition: transform 0.2s;
+  }
+  .game-card:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  /* ── Note ── */
+  .note {
+    text-align: center;
+    margin-top: 4rem;
+    color: var(--swan-brown);
+    font-size: 0.85rem;
+  }
+  .note .divider-line { background: var(--swan-sand); }
+  .note .divider-diamond { background: var(--swan-blush); }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .games-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
