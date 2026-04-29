@@ -131,96 +131,21 @@ import '../styles/global.css';
       <section class="travel-section">
         <div class="section-label">Where to Sleep</div>
         <h2 class="section-title">Hotels Near Downtown Memphis</h2>
-        <p class="section-intro">All options below are well-reviewed, reasonably priced, and located in or near the heart of downtown — putting you close to the venue and the best of the city.</p>
-
-        <div class="hotels-grid">
-
-          <div class="hotel-card">
-            <div class="hotel-tier">Best Value</div>
-            <h3 class="hotel-name">Residence Inn by Marriott Memphis Downtown</h3>
-            <p class="hotel-desc">Spacious suites with full kitchens — great for longer stays or families. Highly rated for comfort and staff, with a terrace and fitness center. Near AutoZone Park.</p>
-            <div class="hotel-tags">
-              <span class="tag">Suites w/ Kitchens</span>
-              <span class="tag">Fitness Center</span>
-              <span class="tag">Valet Parking</span>
-            </div>
+        <div class="hotel-advisory">
+          <p>
+            Although Memphis is a beautiful city, it may be best to stay away from picking an Airbnb located in the deeper parts of the city. We would recommend either staying at a reputable brand-name hotel downtown, or looking at options in <strong>Germantown</strong> or <strong>Cordova</strong> east of the city. Just keep in mind that Germantown and Cordova are further from the venue, so you'll want to plan for a ~30 minute drive on the wedding day.
+          </p>
+          <div class="advisory-divider"></div>
+          <div class="advisory-warning">
+            <span class="warning-icon"></span>
+            <p>When searching for hotels or rentals, we'd recommend avoiding accommodations near <strong>Frayser, Whitehaven, Orange Mound,</strong> and <strong>Hickory Hill</strong>.</p>
           </div>
-
-          <div class="hotel-card">
-            <div class="hotel-tier">Best Value</div>
-            <h3 class="hotel-name">La Quinta Inn & Suites by Wyndham Memphis Downtown</h3>
-            <p class="hotel-desc">Consistently top-rated for the price. Free breakfast and free WiFi are included, plus a pool and self-parking. Walking distance to Beale Street and the venue area.</p>
-            <div class="hotel-tags">
-              <span class="tag">Free Breakfast</span>
-              <span class="tag">Free WiFi</span>
-              <span class="tag">Pool</span>
-              <span class="tag">Self-Parking</span>
-            </div>
-          </div>
-
-          <div class="hotel-card">
-            <div class="hotel-tier">Mid-Range</div>
-            <h3 class="hotel-name">Hampton Inn & Suites Memphis – Beale Street</h3>
-            <p class="hotel-desc">A short walk from the National Civil Rights Museum and central entertainment. Clean, reliable, and friendly staff. Well-situated for exploring on foot.</p>
-            <div class="hotel-tags">
-              <span class="tag">Near Civil Rights Museum</span>
-              <span class="tag">Walkable Location</span>
-            </div>
-          </div>
-
-          <div class="hotel-card">
-            <div class="hotel-tier">Mid-Range</div>
-            <h3 class="hotel-name">SpringHill Suites by Marriott Memphis Downtown</h3>
-            <p class="hotel-desc">Overlooks Court Square Park with spacious suites, a pool, spa, and complimentary hot breakfast. Staff are known for going above and beyond with local recommendations.</p>
-            <div class="hotel-tags">
-              <span class="tag">Complimentary Breakfast</span>
-              <span class="tag">Pool & Spa</span>
-              <span class="tag">Court Square Views</span>
-            </div>
-          </div>
-
-          <div class="hotel-card">
-            <div class="hotel-tier">Splurge</div>
-            <h3 class="hotel-name">Hyatt Centric Beale Street Memphis</h3>
-            <p class="hotel-desc">One of downtown's newer and more polished hotels. Outdoor pool, solid dining, and right on Beale Street. A great pick if you want something a step up in style.</p>
-            <div class="hotel-tags">
-              <span class="tag">Outdoor Pool</span>
-              <span class="tag">On Beale Street</span>
-              <span class="tag">Modern Design</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Getting Around -->
-      <section class="travel-section">
-        <div class="section-label">On the Ground</div>
-        <h2 class="section-title">Getting Around</h2>
-        <div class="getting-around-grid">
-          <div class="around-card">
-            <div class="around-icon">🚗</div>
-            <h4>Rental Car</h4>
-            <p>All major rental agencies are available at MEM. Recommended if you're flying into Nashville or plan to explore beyond downtown.</p>
-          </div>
-          <div class="around-card">
-            <div class="around-icon">📱</div>
-            <h4>Rideshare</h4>
-            <p>Uber and Lyft both operate in Memphis and are the easiest option for getting to and from the airport and around downtown.</p>
-          </div>
-          <div class="around-card">
-            <div class="around-icon">🚶</div>
-            <h4>On Foot</h4>
-            <p>Downtown Memphis is quite walkable. Most hotels listed here are within easy reach of the venue and Beale Street.</p>
+          <div class="advisory-warning">
+            <span class="warning-icon"></span>
+            <p>If you're renting a car, please do not leave any valuables inside — not even in the trunk. Take everything with you when you park, especially overnight.</p>
           </div>
         </div>
       </section>
-
-      <!-- Questions -->
-      <section class="travel-cta">
-        <p class="cta-text">Questions about getting here? Reach out at <a href="mailto:youremail@email.com" class="cta-link">youremail@email.com</a> and we'll help point you in the right direction.</p>
-      </section>
-
     </div>
   </main>
 </Layout>
@@ -587,72 +512,26 @@ import '../styles/global.css';
     margin: 0;
   }
 
-  /* ─── Hotels Grid ─── */
-  .hotels-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+  /* ─── Hotel Advisory ─── */
+  .hotel-advisory {
+    background: var(--swan-cream);
+    border: 1px solid rgba(93, 80, 80, 0.12);
+    border-left: 4px solid var(--swan-gold);
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
   }
 
-  @media (max-width: 640px) {
-    .hotels-grid { grid-template-columns: 1fr; }
-  }
-
-  .hotel-card {
-    background: var(--swan-white);
-    border: 1px solid rgba(93, 80, 80, 0.1);
-    border-radius: 8px;
-    padding: 1.5rem;
-    position: relative;
-    transition: box-shadow 0.2s ease;
-  }
-
-  .hotel-card:hover {
-    box-shadow: 0 4px 20px rgba(73, 78, 60, 0.1);
-  }
-
-  .hotel-tier {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--swan-gold);
-    margin-bottom: 0.5rem;
-  }
-
-  .hotel-name {
+  .hotel-advisory p {
     font-family: 'Jost', sans-serif;
     font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--swan-forest);
-    margin: 0 0 0.75rem;
-    line-height: 1.4;
-  }
-
-  .hotel-desc {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.85rem;
     color: var(--swan-brown);
-    line-height: 1.7;
-    margin: 0 0 1rem;
+    line-height: 1.8;
+    margin: 0;
   }
 
-  .hotel-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tag {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    background: rgba(190, 210, 188, 0.35);
+  .hotel-advisory strong {
     color: var(--swan-forest);
-    padding: 0.2rem 0.6rem;
-    border-radius: 99px;
+    font-weight: 600;
   }
 
   /* ─── Getting Around ─── */
