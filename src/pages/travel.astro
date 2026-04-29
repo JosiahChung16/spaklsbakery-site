@@ -1,0 +1,726 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="Travel & Stay | Josiah & Sarah">
+  <main class="travel-page">
+
+    <!-- Hero -->
+    <section class="travel-hero">
+      <div class="hero-inner">
+        <p class="travel-eyebrow">Getting Here</p>
+        <h1 class="travel-title">Travel & Stay</h1>
+        <p class="travel-subtitle">Everything you need to find your way to Memphis and settle in for the celebration.</p>
+      </div>
+    </section>
+
+    <div class="travel-content">
+
+      <!-- Timezone Banner -->
+      <section class="timezone-banner">
+        <div class="timezone-inner">
+          <span class="tz-icon">🕐</span>
+          <div class="tz-text">
+            <strong>Memphis is in the Central Time Zone (CT)</strong>
+            <span>All wedding events run on Central Time — please set your clocks accordingly when you arrive.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Airport Section -->
+      <section class="travel-section">
+        <div class="section-label">By Air</div>
+        <h2 class="section-title">Airports</h2>
+
+        <!-- Primary Airport -->
+        <div class="airport-card primary">
+          <div class="airport-badge">Recommended</div>
+          <div class="airport-header">
+            <div class="airport-code">MEM</div>
+            <div class="airport-info">
+              <h3>Memphis International Airport</h3>
+              <p class="airport-tagline">Your best bet — right in the city</p>
+            </div>
+          </div>
+          <div class="airport-details">
+            <div class="airport-detail">
+              <span class="detail-label">Distance to Venue</span>
+              <span class="detail-value">~12 miles · 15–20 min drive</span>
+            </div>
+            <div class="airport-detail">
+              <span class="detail-label">Airlines</span>
+              <span class="detail-value">Delta, American, Southwest, United, Allegiant, Breeze, Frontier, Spirit</span>
+            </div>
+            <div class="airport-detail">
+              <span class="detail-label">Getting Downtown</span>
+              <span class="detail-value">Rideshare (Uber/Lyft), rental car, or taxi</span>
+            </div>
+          </div>
+          <p class="airport-note">
+            MEM is the clear first choice. It offers nonstop flights from Atlanta, Chicago, Dallas, Charlotte, New York, Los Angeles, and dozens more cities. The terminal was recently modernized with updated dining and retail, and downtown is a quick drive away.
+          </p>
+        </div>
+
+        <!-- Secondary Airport -->
+        <div class="airport-card secondary">
+          <div class="airport-header">
+            <div class="airport-code secondary-code">BNA</div>
+            <div class="airport-info">
+              <h3>Nashville International Airport</h3>
+              <p class="airport-tagline">Secondary option if fares are better</p>
+            </div>
+          </div>
+          <div class="airport-details">
+            <div class="airport-detail">
+              <span class="detail-label">Distance to Memphis</span>
+              <span class="detail-value">~219 miles · ~3.5 hr drive</span>
+            </div>
+            <div class="airport-detail">
+              <span class="detail-label">Best For</span>
+              <span class="detail-value">Guests who find significantly cheaper fares and don't mind renting a car</span>
+            </div>
+          </div>
+          <p class="airport-note">
+            Nashville has more frequent international connections and may offer better pricing depending on your origin city. If you fly into BNA, a rental car is your most practical option — it's a straightforward drive west on I-40.
+          </p>
+        </div>
+      </section>
+
+      <!-- Chattanooga Warning Section -->
+      <section class="travel-section">
+        <div class="distance-callout">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-content">
+            <h3>A Note on Chattanooga</h3>
+            <p>
+              Because Chattanooga is also in Tennessee, some guests assume it's a short drive to Memphis — <strong>it is not.</strong> Chattanooga sits at the far eastern edge of the state, and Memphis is all the way at the western edge.
+            </p>
+            <div class="distance-stat">
+              <span class="distance-number">~340 miles</span>
+              <span class="distance-sep">·</span>
+              <span class="distance-time">~5 hours of driving</span>
+            </div>
+            <p class="callout-footer">
+              Tennessee is a long state — roughly 440 miles from tip to tip. Chattanooga is far closer to Atlanta, Georgia than it is to Memphis. If you're flying, please use Memphis International (MEM) or Nashville (BNA), not Chattanooga (CHA).
+            </p>
+            <div class="state-visual">
+              <div class="state-bar">
+                <div class="state-marker marker-memphis">
+                  <span class="marker-label">Memphis</span>
+                  <span class="marker-dot"></span>
+                </div>
+                <div class="state-bar-line"></div>
+                <div class="state-marker marker-nash">
+                  <span class="marker-label">Nashville</span>
+                  <span class="marker-dot"></span>
+                </div>
+                <div class="state-bar-line state-bar-right"></div>
+                <div class="state-marker marker-chatt">
+                  <span class="marker-label">Chattanooga</span>
+                  <span class="marker-dot"></span>
+                </div>
+              </div>
+              <p class="state-caption">← West Tennessee &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; East Tennessee →</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hotels Section -->
+      <section class="travel-section">
+        <div class="section-label">Where to Sleep</div>
+        <h2 class="section-title">Hotels Near Downtown Memphis</h2>
+        <p class="section-intro">All options below are well-reviewed, reasonably priced, and located in or near the heart of downtown — putting you close to the venue and the best of the city.</p>
+
+        <div class="hotels-grid">
+
+          <div class="hotel-card">
+            <div class="hotel-tier">Best Value</div>
+            <h3 class="hotel-name">Residence Inn by Marriott Memphis Downtown</h3>
+            <p class="hotel-desc">Spacious suites with full kitchens — great for longer stays or families. Highly rated for comfort and staff, with a terrace and fitness center. Near AutoZone Park.</p>
+            <div class="hotel-tags">
+              <span class="tag">Suites w/ Kitchens</span>
+              <span class="tag">Fitness Center</span>
+              <span class="tag">Valet Parking</span>
+            </div>
+          </div>
+
+          <div class="hotel-card">
+            <div class="hotel-tier">Best Value</div>
+            <h3 class="hotel-name">La Quinta Inn & Suites by Wyndham Memphis Downtown</h3>
+            <p class="hotel-desc">Consistently top-rated for the price. Free breakfast and free WiFi are included, plus a pool and self-parking. Walking distance to Beale Street and the venue area.</p>
+            <div class="hotel-tags">
+              <span class="tag">Free Breakfast</span>
+              <span class="tag">Free WiFi</span>
+              <span class="tag">Pool</span>
+              <span class="tag">Self-Parking</span>
+            </div>
+          </div>
+
+          <div class="hotel-card">
+            <div class="hotel-tier">Mid-Range</div>
+            <h3 class="hotel-name">Hampton Inn & Suites Memphis – Beale Street</h3>
+            <p class="hotel-desc">A short walk from the National Civil Rights Museum and central entertainment. Clean, reliable, and friendly staff. Well-situated for exploring on foot.</p>
+            <div class="hotel-tags">
+              <span class="tag">Near Civil Rights Museum</span>
+              <span class="tag">Walkable Location</span>
+            </div>
+          </div>
+
+          <div class="hotel-card">
+            <div class="hotel-tier">Mid-Range</div>
+            <h3 class="hotel-name">SpringHill Suites by Marriott Memphis Downtown</h3>
+            <p class="hotel-desc">Overlooks Court Square Park with spacious suites, a pool, spa, and complimentary hot breakfast. Staff are known for going above and beyond with local recommendations.</p>
+            <div class="hotel-tags">
+              <span class="tag">Complimentary Breakfast</span>
+              <span class="tag">Pool & Spa</span>
+              <span class="tag">Court Square Views</span>
+            </div>
+          </div>
+
+          <div class="hotel-card">
+            <div class="hotel-tier">Splurge</div>
+            <h3 class="hotel-name">Hyatt Centric Beale Street Memphis</h3>
+            <p class="hotel-desc">One of downtown's newer and more polished hotels. Outdoor pool, solid dining, and right on Beale Street. A great pick if you want something a step up in style.</p>
+            <div class="hotel-tags">
+              <span class="tag">Outdoor Pool</span>
+              <span class="tag">On Beale Street</span>
+              <span class="tag">Modern Design</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Getting Around -->
+      <section class="travel-section">
+        <div class="section-label">On the Ground</div>
+        <h2 class="section-title">Getting Around</h2>
+        <div class="getting-around-grid">
+          <div class="around-card">
+            <div class="around-icon">🚗</div>
+            <h4>Rental Car</h4>
+            <p>All major rental agencies are available at MEM. Recommended if you're flying into Nashville or plan to explore beyond downtown.</p>
+          </div>
+          <div class="around-card">
+            <div class="around-icon">📱</div>
+            <h4>Rideshare</h4>
+            <p>Uber and Lyft both operate in Memphis and are the easiest option for getting to and from the airport and around downtown.</p>
+          </div>
+          <div class="around-card">
+            <div class="around-icon">🚶</div>
+            <h4>On Foot</h4>
+            <p>Downtown Memphis is quite walkable. Most hotels listed here are within easy reach of the venue and Beale Street.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Questions -->
+      <section class="travel-cta">
+        <p class="cta-text">Questions about getting here? Reach out at <a href="mailto:youremail@email.com" class="cta-link">youremail@email.com</a> and we'll help point you in the right direction.</p>
+      </section>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .travel-page {
+    min-height: 100vh;
+    background-color: var(--swan-bg);
+  }
+
+  /* ─── Hero ─── */
+  .travel-hero {
+    background-color: var(--swan-forest);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .hero-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .travel-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--swan-sage);
+    margin-bottom: 1rem;
+  }
+
+  .travel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    font-weight: 400;
+    color: var(--swan-cream);
+    margin: 0 0 1.25rem;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .travel-subtitle {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    color: var(--swan-sage);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ─── Content Wrapper ─── */
+  .travel-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  /* ─── Timezone Banner ─── */
+  .timezone-banner {
+    background: var(--swan-sand);
+    border-left: 4px solid var(--swan-gold);
+    border-radius: 4px;
+    padding: 1.1rem 1.5rem;
+    margin-bottom: 3.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .tz-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .tz-text {
+    font-family: 'Jost', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .tz-text strong {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--swan-forest);
+  }
+
+  .tz-text span {
+    font-size: 0.875rem;
+    color: var(--swan-brown);
+  }
+
+  /* ─── Section Shared ─── */
+  .travel-section {
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--swan-blush);
+    margin-bottom: 0.4rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 400;
+    color: var(--swan-forest);
+    margin: 0 0 1.75rem;
+    line-height: 1.15;
+  }
+
+  .section-intro {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    color: var(--swan-brown);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  /* ─── Airport Cards ─── */
+  .airport-card {
+    background: var(--swan-white);
+    border: 1px solid rgba(93, 80, 80, 0.12);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .airport-card.primary {
+    border-color: var(--swan-sage);
+    background: linear-gradient(135deg, var(--swan-white) 0%, #f5f8f5 100%);
+  }
+
+  .airport-badge {
+    position: absolute;
+    top: -1px;
+    right: 1.5rem;
+    background: var(--swan-forest);
+    color: var(--swan-cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.85rem;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .airport-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .airport-code {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--swan-forest);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .secondary-code {
+    color: var(--swan-brown);
+    opacity: 0.6;
+  }
+
+  .airport-info h3 {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--swan-brown);
+    margin: 0 0 0.2rem;
+  }
+
+  .airport-tagline {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    color: var(--swan-olive);
+    margin: 0;
+    font-style: italic;
+  }
+
+  .airport-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    background: rgba(190, 210, 188, 0.2);
+    border-radius: 6px;
+  }
+
+  .airport-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .detail-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--swan-olive);
+  }
+
+  .detail-value {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.875rem;
+    color: var(--swan-brown);
+    line-height: 1.5;
+  }
+
+  .airport-note {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--swan-brown);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ─── Chattanooga Callout ─── */
+  .distance-callout {
+    background: #fdf6f0;
+    border: 1px solid rgba(192, 132, 128, 0.3);
+    border-left: 5px solid var(--swan-blush);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .callout-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+
+  .callout-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--swan-brown);
+    margin: 0 0 0.75rem;
+  }
+
+  .callout-content p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.925rem;
+    color: var(--swan-brown);
+    line-height: 1.75;
+    margin: 0 0 1rem;
+  }
+
+  .callout-content strong {
+    color: var(--swan-forest);
+  }
+
+  .distance-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--swan-blush);
+    color: var(--swan-white);
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .distance-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .distance-sep {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    opacity: 0.6;
+    color: white;
+  }
+
+  .distance-time {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: white;
+  }
+
+  .callout-footer {
+    font-size: 0.875rem !important;
+    opacity: 0.85;
+  }
+
+  /* Tennessee state visual */
+  .state-visual {
+    margin-top: 1.25rem;
+  }
+
+  .state-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .state-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 0.3rem;
+  }
+
+  .marker-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--swan-forest);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .marker-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--swan-forest);
+    border: 2px solid var(--swan-white);
+    box-shadow: 0 0 0 2px var(--swan-forest);
+  }
+
+  .marker-memphis .marker-dot { background: var(--swan-blush); box-shadow: 0 0 0 2px var(--swan-blush); }
+  .marker-nash .marker-dot { background: var(--swan-gold); box-shadow: 0 0 0 2px var(--swan-gold); }
+  .marker-chatt .marker-dot { background: var(--swan-brown); box-shadow: 0 0 0 2px var(--swan-brown); }
+
+  .state-bar-line {
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(to right, var(--swan-blush), var(--swan-gold));
+    margin-top: 1.3rem;
+  }
+
+  .state-bar-right {
+    background: linear-gradient(to right, var(--swan-gold), var(--swan-brown));
+  }
+
+  .state-caption {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    color: var(--swan-olive);
+    margin: 0;
+  }
+
+  /* ─── Hotels Grid ─── */
+  .hotels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .hotels-grid { grid-template-columns: 1fr; }
+  }
+
+  .hotel-card {
+    background: var(--swan-white);
+    border: 1px solid rgba(93, 80, 80, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: relative;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .hotel-card:hover {
+    box-shadow: 0 4px 20px rgba(73, 78, 60, 0.1);
+  }
+
+  .hotel-tier {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--swan-gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .hotel-name {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--swan-forest);
+    margin: 0 0 0.75rem;
+    line-height: 1.4;
+  }
+
+  .hotel-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    color: var(--swan-brown);
+    line-height: 1.7;
+    margin: 0 0 1rem;
+  }
+
+  .hotel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    background: rgba(190, 210, 188, 0.35);
+    color: var(--swan-forest);
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+  }
+
+  /* ─── Getting Around ─── */
+  .getting-around-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 600px) {
+    .getting-around-grid { grid-template-columns: 1fr; }
+  }
+
+  .around-card {
+    background: var(--swan-white);
+    border: 1px solid rgba(93, 80, 80, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+  }
+
+  .around-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .around-card h4 {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--swan-forest);
+    margin: 0 0 0.5rem;
+  }
+
+  .around-card p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.83rem;
+    color: var(--swan-brown);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ─── CTA ─── */
+  .travel-cta {
+    text-align: center;
+    padding: 2rem;
+    background: var(--swan-cream);
+    border-radius: 8px;
+    border: 1px solid rgba(93, 80, 80, 0.1);
+  }
+
+  .cta-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--swan-brown);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .cta-link {
+    color: var(--swan-forest);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .cta-link:hover {
+    color: var(--swan-blush);
+  }
+</style>
