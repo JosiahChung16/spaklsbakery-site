@@ -1,0 +1,510 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="Schedule | Josiah & Sarah">
+  <main class="schedule-page">
+
+    <!-- Hero -->
+    <section class="schedule-hero">
+      <div class="hero-inner">
+        <p class="schedule-eyebrow">June 14, 2025</p>
+        <h1 class="schedule-title">The Day</h1>
+        <p class="schedule-subtitle">A timeline of everything happening on our wedding day.</p>
+      </div>
+    </section>
+
+    <div class="schedule-content">
+
+      <!-- Date Card -->
+      <div class="date-card">
+        <div class="date-card-inner">
+          <div class="date-detail">
+            <span class="date-label">Date</span>
+            <span class="date-value">Saturday, June 14, 2025</span>
+          </div>
+          <div class="date-divider"></div>
+          <div class="date-detail">
+            <span class="date-label">Dress Code</span>
+            <span class="date-value">Garden Formal</span>
+          </div>
+          <div class="date-divider"></div>
+          <div class="date-detail">
+            <span class="date-label">Time Zone</span>
+            <span class="date-value">Central Time (CT)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <section class="timeline-section">
+        <div class="timeline">
+
+          <!-- Ceremony -->
+          <div class="timeline-block guest-block">
+            <div class="timeline-time">
+              <span class="time-main">5:00 PM</span>
+            </div>
+            <div class="timeline-connector">
+              <div class="connector-dot ceremony-dot"></div>
+              <div class="connector-line"></div>
+            </div>
+            <div class="timeline-card">
+              <div class="card-tag ceremony-tag">Ceremony</div>
+              <h3 class="card-title">Ceremony Begins</h3>
+              <p class="card-desc">Please be seated before 5:00 PM. Doors will open for guests shortly before the hour — we kindly ask that you arrive early so we can begin on time.</p>
+            </div>
+          </div>
+
+          <div class="timeline-block guest-block">
+            <div class="timeline-time">
+              <span class="time-main">5:30 PM</span>
+            </div>
+            <div class="timeline-connector">
+              <div class="connector-dot ceremony-dot"></div>
+              <div class="connector-line"></div>
+            </div>
+            <div class="timeline-card">
+              <div class="card-tag ceremony-tag">Ceremony</div>
+              <h3 class="card-title">Ceremony Ends</h3>
+              <p class="card-desc">We'll be married! Guests are welcome to mingle while we step away for photos.</p>
+            </div>
+          </div>
+
+          <!-- Reception -->
+          <div class="timeline-block guest-block">
+            <div class="timeline-time">
+              <span class="time-main">6:00 PM</span>
+            </div>
+            <div class="timeline-connector">
+              <div class="connector-dot reception-dot"></div>
+              <div class="connector-line"></div>
+            </div>
+            <div class="timeline-card reception-card">
+              <div class="card-tag reception-tag">Reception</div>
+              <h3 class="card-title">Reception Begins</h3>
+              <p class="card-desc">Dinner, dancing, toasts, and celebrating the night away. Doors open for the reception — find your seat and let the party begin.</p>
+            </div>
+          </div>
+
+          <div class="timeline-block guest-block">
+            <div class="timeline-time">
+              <span class="time-main">11:00 PM</span>
+            </div>
+            <div class="timeline-connector">
+              <div class="connector-dot farewell-dot"></div>
+              <div class="connector-line farewell-line"></div>
+            </div>
+            <div class="timeline-card">
+              <div class="card-tag farewell-tag">End of Evening</div>
+              <h3 class="card-title">Reception Ends · Guests Depart</h3>
+              <p class="card-desc">The celebration wraps up at 11:00 PM. Please arrange your transportation in advance — rideshare, designated driver, or hotel shuttle — so your evening ends smoothly.</p>
+            </div>
+          </div>
+
+          <!-- Venue Note -->
+          <div class="timeline-block vendor-block">
+            <div class="timeline-time">
+              <span class="time-main vendor-time">12:00 AM</span>
+            </div>
+            <div class="timeline-connector">
+              <div class="connector-dot vendor-dot"></div>
+            </div>
+            <div class="timeline-card vendor-card">
+              <div class="card-tag vendor-tag">Venue</div>
+              <h3 class="card-title">Building Closed</h3>
+              <p class="card-desc">Vendor load-out complete and building closed at midnight.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Venue Spaces -->
+      <section class="spaces-section">
+        <div class="spaces-label">Venue Spaces in Use</div>
+        <h2 class="spaces-title">Where It's All Happening</h2>
+        <div class="spaces-grid">
+          <div class="space-card">
+            <div class="space-icon">🏛️</div>
+            <h4>Rooftop Pavilion</h4>
+            <p>Open-air rooftop space available from noon for set-up.</p>
+          </div>
+          <div class="space-card">
+            <div class="space-icon">🪟</div>
+            <h4>River Window</h4>
+            <p>Scenic river-facing room, part of the day-of preparation spaces.</p>
+          </div>
+          <div class="space-card">
+            <div class="space-icon">📋</div>
+            <h4>Boardroom</h4>
+            <p>Available from noon for vendor coordination and set-up staging.</p>
+          </div>
+          <div class="space-card">
+            <div class="space-icon">🎨</div>
+            <h4>Docent Lounge</h4>
+            <p>Access time to be confirmed — check back for updates.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Questions CTA -->
+      <section class="schedule-cta">
+        <p class="cta-text">Questions about the day? Reach out at <a href="mailto:youremail@email.com" class="cta-link">youremail@email.com</a> and we'll get back to you.</p>
+      </section>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .schedule-page {
+    min-height: 100vh;
+    background-color: var(--swan-bg);
+  }
+
+  /* ─── Hero ─── */
+  .schedule-hero {
+    background-color: var(--swan-forest);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+  }
+
+  .hero-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .schedule-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--swan-sage);
+    margin-bottom: 1rem;
+  }
+
+  .schedule-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    font-weight: 400;
+    color: var(--swan-cream);
+    margin: 0 0 1.25rem;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .schedule-subtitle {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    color: var(--swan-sage);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ─── Content ─── */
+  .schedule-content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  /* ─── Date Card ─── */
+  .date-card {
+    background: var(--swan-white);
+    border: 1px solid rgba(93, 80, 80, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .date-card-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .date-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    text-align: center;
+  }
+
+  .date-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--swan-olive);
+  }
+
+  .date-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--swan-forest);
+    font-weight: 500;
+  }
+
+  .date-divider {
+    width: 1px;
+    height: 2rem;
+    background: rgba(93, 80, 80, 0.15);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 500px) {
+    .date-divider { display: none; }
+    .date-card-inner { flex-direction: column; gap: 1rem; }
+  }
+
+  /* ─── Timeline ─── */
+  .timeline-section {
+    margin-bottom: 4rem;
+  }
+
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-block {
+    display: grid;
+    grid-template-columns: 90px 32px 1fr;
+    gap: 0 1.25rem;
+    align-items: flex-start;
+    min-height: 100px;
+  }
+
+  .timeline-block:last-child {
+    min-height: auto;
+  }
+
+  /* Time column */
+  .timeline-time {
+    text-align: right;
+    padding-top: 0.6rem;
+  }
+
+  .time-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--swan-forest);
+    display: block;
+    line-height: 1.2;
+  }
+
+  .vendor-time {
+    color: var(--swan-brown);
+    opacity: 0.5;
+    font-size: 0.95rem;
+  }
+
+  /* Connector column */
+  .timeline-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.55rem;
+  }
+
+  .connector-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid var(--swan-white);
+    box-shadow: 0 0 0 2px currentColor;
+    z-index: 1;
+  }
+
+  .ceremony-dot { color: var(--swan-sage); background: var(--swan-sage); }
+  .reception-dot { color: var(--swan-gold); background: var(--swan-gold); }
+  .farewell-dot { color: var(--swan-blush); background: var(--swan-blush); }
+  .vendor-dot { color: rgba(93,80,80,0.25); background: rgba(93,80,80,0.25); box-shadow: none; border-color: transparent; }
+
+  .connector-line {
+    width: 2px;
+    flex: 1;
+    min-height: 70px;
+    background: linear-gradient(to bottom, rgba(93,80,80,0.15), rgba(93,80,80,0.08));
+    margin-top: 4px;
+  }
+
+  .farewell-line {
+    background: linear-gradient(to bottom, rgba(93,80,80,0.1), transparent);
+  }
+
+  /* Card column */
+  .timeline-card {
+    background: var(--swan-white);
+    border: 1px solid rgba(93, 80, 80, 0.1);
+    border-radius: 8px;
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .timeline-card:hover {
+    box-shadow: 0 4px 16px rgba(73, 78, 60, 0.08);
+  }
+
+  .reception-card {
+    border-color: rgba(180, 146, 76, 0.3);
+    background: linear-gradient(135deg, var(--swan-white) 0%, #fdfaf0 100%);
+  }
+
+  .vendor-card {
+    background: transparent;
+    border-color: rgba(93, 80, 80, 0.08);
+    border-style: dashed;
+  }
+
+  .vendor-card:hover {
+    box-shadow: none;
+  }
+
+  .card-tag {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+
+  .ceremony-tag { color: var(--swan-sage); filter: brightness(0.75); }
+  .reception-tag { color: var(--swan-gold); }
+  .farewell-tag { color: var(--swan-blush); }
+  .vendor-tag { color: var(--swan-brown); opacity: 0.4; }
+
+  .card-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--swan-forest);
+    margin: 0 0 0.4rem;
+  }
+
+  .vendor-card .card-title {
+    color: var(--swan-brown);
+    opacity: 0.5;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .card-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.875rem;
+    color: var(--swan-brown);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .vendor-card .card-desc {
+    opacity: 0.5;
+    font-size: 0.8rem;
+  }
+
+  /* ─── Spaces Section ─── */
+  .spaces-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .spaces-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--swan-blush);
+    margin-bottom: 0.4rem;
+  }
+
+  .spaces-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 400;
+    color: var(--swan-forest);
+    margin: 0 0 1.75rem;
+    line-height: 1.15;
+  }
+
+  .spaces-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 560px) {
+    .spaces-grid { grid-template-columns: 1fr; }
+  }
+
+  .space-card {
+    background: var(--swan-white);
+    border: 1px solid rgba(93, 80, 80, 0.1);
+    border-radius: 8px;
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .space-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .space-card h4 {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--swan-forest);
+    margin: 0;
+  }
+
+  .space-card p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    color: var(--swan-brown);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ─── CTA ─── */
+  .schedule-cta {
+    text-align: center;
+    padding: 2rem;
+    background: var(--swan-cream);
+    border-radius: 8px;
+    border: 1px solid rgba(93, 80, 80, 0.1);
+  }
+
+  .cta-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--swan-brown);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .cta-link {
+    color: var(--swan-forest);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .cta-link:hover {
+    color: var(--swan-blush);
+  }
+</style>
