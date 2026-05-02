@@ -9,7 +9,7 @@ import '../styles/global.css';
     <!-- Hero -->
     <section class="schedule-hero">
       <div class="hero-inner">
-        <p class="schedule-eyebrow">June 14, 2025</p>
+        <p class="schedule-eyebrow">March 7, 2027</p>
         <h1 class="schedule-title">The Day</h1>
         <p class="schedule-subtitle">A timeline of everything happening on our wedding day.</p>
       </div>
@@ -22,12 +22,7 @@ import '../styles/global.css';
         <div class="date-card-inner">
           <div class="date-detail">
             <span class="date-label">Date</span>
-            <span class="date-value">Saturday, June 14, 2025</span>
-          </div>
-          <div class="date-divider"></div>
-          <div class="date-detail">
-            <span class="date-label">Dress Code</span>
-            <span class="date-value">Garden Formal</span>
+            <span class="date-value">Sunday, March 7, 2027</span>
           </div>
           <div class="date-divider"></div>
           <div class="date-detail">
@@ -53,6 +48,7 @@ import '../styles/global.css';
             <div class="timeline-card">
               <div class="card-tag ceremony-tag">Ceremony</div>
               <h3 class="card-title">Ceremony Begins</h3>
+              <p class="card-desc">Please be seated before 5:00 PM. Doors will open for guests shortly before the hour.</p>
             </div>
           </div>
 
@@ -121,23 +117,26 @@ import '../styles/global.css';
       <section class="spaces-section">
         <div class="spaces-label">Venue Spaces in Use</div>
         <h2 class="spaces-title">Where It's All Happening</h2>
-        <div class="spaces-grid">
-          <div class="space-card">
-            <h4>Rooftop Pavilion</h4>
-            <p>Open-air rooftop space available from noon for set-up.</p>
+        <div class="venue-card">
+          <div class="venue-main">
+            <div class="venue-name-block">
+              <h3 class="venue-name">Memphis Art Museum</h3>
+              <p class="venue-address">49 S Front St, Memphis, TN 38103</p>
+            </div>
+            <a
+              class="venue-map-link"
+              href="https://maps.google.com/?q=49+S+Front+St+Memphis+TN+38103"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Open in Maps</a>
           </div>
-          <div class="space-card">
-            <h4>River Window</h4>
-            <p>Scenic river-facing room, part of the day-of preparation spaces.</p>
-          </div>
-          <div class="space-card">
-            <h4>Boardroom</h4>
-            <p>Available from noon for vendor coordination and set-up staging.</p>
-          </div>
-          <div class="space-card">
-            <h4>Docent Lounge</h4>
-            <p>Access time to be confirmed — check back for updates.</p>
-          </div>
+        </div>
+
+        <div class="parking-card">
+          <div class="parking-header">Parking</div>
+          <p class="parking-desc">
+            Parking is available in the garage directly below the museum. Your parking is fully covered — no need to pay at the machine. Simply pull in, park, and head upstairs.
+          </p>
         </div>
       </section>
     </div>
@@ -425,39 +424,80 @@ import '../styles/global.css';
     line-height: 1.15;
   }
 
-  .spaces-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  @media (max-width: 560px) {
-    .spaces-grid { grid-template-columns: 1fr; }
-  }
-
-  .space-card {
+  /* ─── Venue Card ─── */
+  .venue-card {
     background: var(--swan-white);
     border: 1px solid rgba(93, 80, 80, 0.1);
     border-radius: 8px;
-    padding: 1.4rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.25rem;
   }
 
-  .space-card h4 {
+  .venue-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .venue-name {
     font-family: 'Jost', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--swan-forest);
-    margin: 0;
+    margin: 0 0 0.25rem;
   }
 
-  .space-card p {
+  .venue-address {
     font-family: 'Jost', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     color: var(--swan-brown);
-    line-height: 1.65;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .venue-map-link {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--swan-forest);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .venue-map-link:hover {
+    color: var(--swan-blush);
+  }
+
+  /* ─── Parking Card ─── */
+  .parking-card {
+    background: var(--swan-cream);
+    border: 1px solid rgba(93, 80, 80, 0.1);
+    border-left: 4px solid var(--swan-sage);
+    border-radius: 6px;
+    padding: 1.4rem 1.75rem;
+  }
+
+  .parking-header {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--swan-forest);
+    margin-bottom: 0.5rem;
+  }
+
+  .parking-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    color: var(--swan-brown);
+    line-height: 1.75;
     margin: 0;
   }
 
