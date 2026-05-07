@@ -73,35 +73,6 @@ import Layout from '../layouts/Layout.astro';
     <div class="palette-swatch" style="background:#494E3C"></div>
   </div>
 
-  <!-- STORY TEASER -->
-  <section class="section">
-    <div class="container">
-      <div class="story-grid">
-        <div class="story-text">
-          <span class="section-label">Our Story</span>
-          <h2>A Love Worth Telling</h2>
-          <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-diamond"></div>
-            <div class="divider-line"></div>
-          </div>
-          <p>Placeholder!</p>
-          <a href="/our-story" class="btn">Read Our Story</a>
-        </div>
-        <div class="story-ornament">
-          <div class="ornament-box">
-            <div class="ornament-corner tl"></div>
-            <div class="ornament-corner tr"></div>
-            <div class="ornament-corner bl"></div>
-            <div class="ornament-corner br"></div>
-            <span class="ornament-year">2016</span>
-            <span class="ornament-label">Riverside CA</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- RSVP CTA -->
   <section class="rsvp-cta">
     <div class="container">
@@ -229,60 +200,6 @@ import Layout from '../layouts/Layout.astro';
   }
   .palette-swatch { flex: 1; }
 
-  /* STORY */
-  .story-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .story-text h2 { margin-bottom: 0.5rem; }
-  .story-text p { color: var(--swan-brown); font-size: 0.95rem; }
-  .story-text .btn { margin-top: 1.5rem; }
-
-  .story-ornament {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ornament-box {
-    width: 220px;
-    height: 220px;
-    border: 2px solid var(--swan-forest);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background: var(--swan-cream);
-  }
-  .ornament-corner {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-color: var(--swan-gold);
-    border-style: solid;
-  }
-  .ornament-corner.tl { top: 6px; left: 6px; border-width: 1.5px 0 0 1.5px; }
-  .ornament-corner.tr { top: 6px; right: 6px; border-width: 1.5px 1.5px 0 0; }
-  .ornament-corner.bl { bottom: 6px; left: 6px; border-width: 0 0 1.5px 1.5px; }
-  .ornament-corner.br { bottom: 6px; right: 6px; border-width: 0 1.5px 1.5px 0; }
-
-  .ornament-year {
-    font-family: var(--font-display);
-    font-size: 4rem;
-    font-weight: 300;
-    color: var(--swan-forest);
-    line-height: 1;
-  }
-  .ornament-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--swan-olive);
-    margin-top: 0.3rem;
-  }
-
   /* RSVP CTA */
   .rsvp-cta {
     background: var(--swan-blush);
@@ -300,8 +217,6 @@ import Layout from '../layouts/Layout.astro';
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .story-ornament { display: none; }
     .detail-divider { display: none; }
     .detail-item { min-width: 140px; }
   }
