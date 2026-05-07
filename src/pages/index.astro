@@ -73,6 +73,9 @@ import Layout from '../layouts/Layout.astro';
     <div class="palette-swatch" style="background:#494E3C"></div>
   </div>
 
+  <!-- WHITE BUFFER -->
+  <div class="white-bar"></div>
+
   <!-- RSVP CTA -->
   <section class="rsvp-cta">
     <div class="container">
@@ -199,6 +202,12 @@ import Layout from '../layouts/Layout.astro';
     height: 8px;
   }
   .palette-swatch { flex: 1; }
+
+  /* WHITE BAR */
+  .white-bar {
+    background: var(--swan-white);
+    height: 5rem;
+  }
 
   /* RSVP CTA */
   .rsvp-cta {
