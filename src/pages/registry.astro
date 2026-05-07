@@ -33,7 +33,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="video-wrap">
           <iframe
             src="https://www.youtube.com/embed/Nbe_rtee1wI?rel=0&modestbranding=1"
-            title="A message from Eleanor and Theodore"
+            title="A message from Josiah and Sarah"
             frameborder="0"
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
@@ -46,11 +46,6 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- VENMO -->
         <div class="payment-card">
-          <div class="payment-icon venmo-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.7 2c.5.8.7 1.7.7 2.8 0 3.5-3 8-5.4 11.2H9.6L7 2.6l4.7-.4 1.3 10.2c1.2-2 2.7-5.1 2.7-7.2 0-1.2-.2-2-.5-2.7L19.7 2z"/>
-            </svg>
-          </div>
           <span class="section-label">Venmo</span>
           <div class="payment-handle">@Josiah-Chung-1</div>
           <p class="payment-note">Tap the button below to open Venmo, or search for our handle directly in the app.</p>
@@ -73,11 +68,6 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- ZELLE -->
         <div class="payment-card">
-          <div class="payment-icon zelle-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.5 2H21v2.5l-9.5 12H21V19h-7.7l.2 3H11l-.2-3H3v-2.5l9.5-12H3V2h8.3L11 2h2.5z"/>
-            </svg>
-          </div>
           <span class="section-label">Zelle</span>
           <div class="payment-handle">423-457-1216</div>
           <p class="payment-note">Open your banking app, navigate to Zelle, and send to our phone number directly.</p>
@@ -148,7 +138,7 @@ import Layout from '../layouts/Layout.astro';
 
   .video-wrap {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
   }
@@ -179,28 +169,6 @@ import Layout from '../layouts/Layout.astro';
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
-  }
-
-  .payment-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.3rem;
-  }
-  .payment-icon svg {
-    width: 28px;
-    height: 28px;
-  }
-  .venmo-icon {
-    background: #3D95CE;
-    color: white;
-  }
-  .zelle-icon {
-    background: #6D1ED4;
-    color: white;
   }
 
   .payment-handle {

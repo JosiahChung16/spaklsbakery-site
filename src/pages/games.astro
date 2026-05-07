@@ -6,7 +6,6 @@ const games = [
     name: "Wordle",
     description: "Guess the five-letter word in six tries. A new puzzle every day.",
     url: "https://www.nytimes.com/games/wordle/index.html",
-    emoji: "🟩",
     label: "Word Game",
     color: "#6aaa64",
   },
@@ -14,7 +13,6 @@ const games = [
     name: "Connections",
     description: "Find groups of four words that share something in common.",
     url: "https://www.nytimes.com/games/connections",
-    emoji: "🟪",
     label: "Grouping",
     color: "#b967c7",
   },
@@ -22,7 +20,6 @@ const games = [
     name: "Mini Crossword",
     description: "A quick 5×5 crossword puzzle. A perfect coffee-break challenge.",
     url: "https://www.nytimes.com/crosswords/game/mini",
-    emoji: "✏️",
     label: "Crossword",
     color: "#4a7fa5",
   },
@@ -30,7 +27,6 @@ const games = [
     name: "Spelling Bee",
     description: "How many words can you make from 7 letters? Find them all to reach Queen Bee.",
     url: "https://www.nytimes.com/puzzles/spelling-bee",
-    emoji: "🐝",
     label: "Word Building",
     color: "#f7da21",
   },
@@ -38,7 +34,6 @@ const games = [
     name: "Strands",
     description: "Find the hidden theme and fill the board with connected words.",
     url: "https://www.nytimes.com/games/strands",
-    emoji: "🔵",
     label: "Word Search",
     color: "#4e91d2",
   },
@@ -46,7 +41,6 @@ const games = [
     name: "The Crossword",
     description: "The full New York Times crossword — the gold standard of puzzles.",
     url: "https://www.nytimes.com/crosswords",
-    emoji: "📰",
     label: "Crossword",
     color: "#B4924C",
   },
@@ -54,6 +48,12 @@ const games = [
 ---
 
 <Layout title="Games">
+
+  <!-- HERO IMAGE -->
+  <div class="games-hero-image">
+    <img src="/IMG_4092.jpg" alt="Josiah with the Oscar Mayer Wienermobile" />
+  </div>
+
   <!-- PAGE HEADER -->
   <section class="page-header">
     <div class="container">
@@ -84,7 +84,6 @@ const games = [
             style={`--accent: ${game.color};`}
           >
             <div class="card-top">
-              <span class="card-emoji">{game.emoji}</span>
               <span class="card-label">{game.label}</span>
             </div>
             <h3 class="card-name">{game.name}</h3>
@@ -113,6 +112,22 @@ const games = [
 </Layout>
 
 <style>
+  /* ── Hero Image ── */
+  .games-hero-image {
+    width: 100%;
+    max-height: 520px;
+    overflow: hidden;
+    display: block;
+  }
+  .games-hero-image img {
+    width: 100%;
+    height: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    object-position: center 60%;
+    display: block;
+  }
+
   /* ── Page Header ── */
   .page-header {
     background: var(--swan-forest);
@@ -180,12 +195,8 @@ const games = [
   .card-top {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-bottom: 1.2rem;
-  }
-  .card-emoji {
-    font-size: 2rem;
-    line-height: 1;
   }
   .card-label {
     font-family: var(--font-body);
@@ -252,6 +263,9 @@ const games = [
   @media (max-width: 600px) {
     .games-grid {
       grid-template-columns: 1fr;
+    }
+    .games-hero-image {
+      max-height: 280px;
     }
   }
 </style>
