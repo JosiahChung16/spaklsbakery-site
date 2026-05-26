@@ -1,6 +1,4 @@
 ---
-import '../styles/global.css';
-
 export interface Props {
   title: string;
   description?: string;
@@ -16,27 +14,38 @@ const { title, description = "Join us to celebrate our wedding day." } = Astro.p
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow" />
-    <title>{title} — Our Wedding</title>
+    <title>{title} | The Hudson Valley Evening Sun</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
+
+    <!-- MASTHEAD BAR -->
+    <div class="masthead-bar">
+      <div class="container masthead-bar-inner">
+        <span class="masthead-meta">Vol. I · No. 1</span>
+        <span class="masthead-meta">Saturday, June 14, 2025</span>
+        <span class="masthead-meta">Hudson Valley, New York</span>
+      </div>
+    </div>
+
     <header class="site-header">
       <div class="container">
         <nav class="nav">
           <a href="/" class="nav-brand">
-            <span class="nav-brand-names">Josiah &amp; Sarah</span>
-            <span class="nav-brand-date">March 7, 2027</span>
+            <span class="nav-brand-pub">The Evening Sun</span>
+            <span class="nav-brand-names">Eleanor &amp; Theodore</span>
           </a>
           <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
             <span></span><span></span><span></span>
           </button>
           <ul class="nav-links" id="navLinks">
             <li><a href="/">Home</a></li>
+            <li><a href="/our-story">Our Story</a></li>
             <li><a href="/schedule">Schedule</a></li>
             <li><a href="/travel">Travel</a></li>
             <li><a href="/attire">Attire</a></li>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/registry">Registry</a></li>
-            <li><a href="/games">Games</a></li>
             <li><a href="/rsvp" class="nav-rsvp">RSVP</a></li>
           </ul>
         </nav>
@@ -50,14 +59,16 @@ const { title, description = "Join us to celebrate our wedding day." } = Astro.p
     <footer class="site-footer">
       <div class="container">
         <div class="footer-inner">
-          <div class="divider">
+          <span class="footer-stamp">FIN.</span>
+          <div class="divider" style="max-width: 320px; margin: 1.5rem auto;">
             <div class="divider-line"></div>
             <div class="divider-diamond"></div>
             <div class="divider-line"></div>
           </div>
-          <p class="footer-names">Josiah &amp; Sarah</p>
-          <p class="footer-date">March 7, 2027 · Memphis, Tennessee</p>
-          <p class="footer-note">We can't wait to celebrate with you.</p>
+          <p class="footer-names">Eleanor &amp; Theodore</p>
+          <p class="footer-date">June 14, 2025 · Hudson Valley, New York</p>
+          <p class="footer-note">"We cannot wait to celebrate with you."</p>
+          <p class="footer-imprint">Printed with affection · The Evening Sun, Hudson Valley Edition</p>
         </div>
       </div>
     </footer>
@@ -65,20 +76,40 @@ const { title, description = "Join us to celebrate our wedding day." } = Astro.p
 </html>
 
 <style>
+  /* ── Masthead bar (top) ── */
+  .masthead-bar {
+    background: var(--dispatch-teal-deep);
+    color: var(--dispatch-yellow);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--dispatch-ochre);
+  }
+  .masthead-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .masthead-meta { white-space: nowrap; }
+
   /* ── Header ── */
   .site-header {
     position: sticky;
     top: 0;
     z-index: 100;
     background: var(--swan-white);
-    border-bottom: 1px solid var(--swan-sand);
+    border-bottom: 3px double var(--dispatch-teal-deep);
   }
 
   .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 0;
+    padding: 1.3rem 0;
     gap: 2rem;
   }
 
@@ -87,45 +118,52 @@ const { title, description = "Join us to celebrate our wedding day." } = Astro.p
     flex-direction: column;
     text-decoration: none;
     flex-shrink: 0;
+    line-height: 1;
+  }
+  .nav-brand-pub {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--dispatch-terracotta);
+    margin-bottom: 0.2rem;
   }
   .nav-brand-names {
     font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--swan-forest);
-    letter-spacing: 0.03em;
-    line-height: 1.1;
-  }
-  .nav-brand-date {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--swan-olive);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dispatch-teal-deep);
+    letter-spacing: 0;
+    line-height: 1;
   }
 
   .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.8rem;
     align-items: center;
   }
   .nav-links a {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--swan-brown);
+    color: var(--dispatch-teal-deep);
     transition: color 0.2s;
+    font-weight: 500;
   }
-  .nav-links a:hover { color: var(--swan-forest); }
+  .nav-links a:hover { color: var(--dispatch-terracotta); }
 
   .nav-rsvp {
-    border: 1.5px solid var(--swan-forest) !important;
-    padding: 0.4rem 1rem;
-    color: var(--swan-forest) !important;
+    border: 1.5px solid var(--dispatch-teal-deep) !important;
+    padding: 0.45rem 1rem;
+    color: var(--dispatch-teal-deep) !important;
     transition: all 0.2s !important;
+    background: var(--dispatch-yellow);
   }
   .nav-rsvp:hover {
-    background: var(--swan-forest);
-    color: var(--swan-cream) !important;
+    background: var(--dispatch-teal-deep) !important;
+    color: var(--dispatch-yellow) !important;
   }
 
   /* ── Mobile toggle ── */
@@ -142,44 +180,71 @@ const { title, description = "Join us to celebrate our wedding day." } = Astro.p
     display: block;
     width: 22px;
     height: 1.5px;
-    background: var(--swan-forest);
+    background: var(--dispatch-teal-deep);
     transition: all 0.2s;
   }
 
   /* ── Footer ── */
   .site-footer {
-    background: var(--swan-forest);
-    padding: 3rem 0;
+    background: var(--dispatch-teal-deep);
+    padding: 4rem 0 3rem;
     margin-top: 4rem;
+    border-top: 6px solid var(--dispatch-ochre);
   }
   .footer-inner {
     text-align: center;
+    color: var(--dispatch-cream);
   }
-  .footer-inner .divider-line { background: rgba(234,236,197,0.2); }
-  .footer-inner .divider-diamond { background: var(--swan-blush); }
+  .footer-inner .divider-line { background: var(--dispatch-yellow); opacity: 0.5; }
+  .footer-inner .divider-diamond { background: var(--dispatch-terracotta); }
+
+  .footer-stamp {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--dispatch-yellow);
+    letter-spacing: 0.15em;
+  }
 
   .footer-names {
     font-family: var(--font-display);
-    font-size: 1.8rem;
-    color: var(--swan-cream);
-    margin: 1rem 0 0.2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dispatch-yellow);
+    margin: 0.8rem 0 0.3rem;
   }
   .footer-date {
+    font-family: var(--font-mono);
     font-size: 0.7rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--swan-sand);
-    margin-bottom: 0.5rem;
+    color: var(--dispatch-mint);
+    margin-bottom: 1.2rem;
   }
   .footer-note {
-    font-family: var(--font-display);
+    font-family: var(--font-serif);
     font-style: italic;
-    color: rgba(234,236,197,0.6);
-    font-size: 1rem;
+    color: var(--dispatch-cream);
+    font-size: 1.15rem;
+    margin: 0 0 1.5rem;
+  }
+  .footer-imprint {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(250, 243, 212, 0.55);
     margin: 0;
   }
 
   /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .masthead-bar-inner { justify-content: center; }
+    .masthead-bar-inner .masthead-meta:nth-child(1),
+    .masthead-bar-inner .masthead-meta:nth-child(3) { display: none; }
+  }
+
   @media (max-width: 768px) {
     .nav-toggle { display: flex; }
 
@@ -193,7 +258,7 @@ const { title, description = "Join us to celebrate our wedding day." } = Astro.p
       flex-direction: column;
       padding: 1.5rem 2rem;
       gap: 1.2rem;
-      border-bottom: 1px solid var(--swan-sand);
+      border-bottom: 3px double var(--dispatch-teal-deep);
       align-items: flex-start;
     }
     .nav-links.open { display: flex; }

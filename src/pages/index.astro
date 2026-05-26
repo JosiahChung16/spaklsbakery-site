@@ -7,22 +7,22 @@ import Layout from '../layouts/Layout.astro';
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <span class="section-label">A Wedding Celebration</span>
-      <div class="divider">
+      <span class="hero-kicker">A Wedding Announcement</span>
+      <div class="divider" style="max-width: 280px; margin: 1.3rem auto;">
         <div class="divider-line"></div>
         <div class="divider-diamond"></div>
         <div class="divider-line"></div>
       </div>
       <h1 class="hero-names">
-        Josiah<span class="hero-amp">&amp;</span>Sarah
+        Eleanor<span class="hero-amp">&amp;</span>Theodore
       </h1>
-      <div class="divider">
+      <div class="divider" style="max-width: 280px; margin: 1.3rem auto;">
         <div class="divider-line"></div>
         <div class="divider-diamond"></div>
         <div class="divider-line"></div>
       </div>
-      <p class="hero-date">Sunday, the Seventh of March, 2027</p>
-      <p class="hero-location">The Memphis Art Museum · Memphis, Tennessee</p>
+      <p class="hero-date">Saturday, the Fourteenth of June, 2025</p>
+      <p class="hero-location">The Swan Estate · Hudson Valley, New York</p>
       <div class="hero-actions">
         <a href="/rsvp" class="btn btn-filled">Confirm Attendance</a>
         <a href="/schedule" class="btn">View Schedule</a>
@@ -36,54 +36,81 @@ import Layout from '../layouts/Layout.astro';
       <div class="details-grid">
         <div class="detail-item">
           <span class="section-label">Ceremony</span>
-          <div class="detail-value">12:30 PM</div>
-          <div class="detail-sub">The Roof Top</div>
+          <div class="detail-value">4:00 PM</div>
+          <div class="detail-sub">The East Garden Pavilion</div>
         </div>
         <div class="detail-divider"></div>
         <div class="detail-item">
           <span class="section-label">Cocktail Hour</span>
-          <div class="detail-value">1:30 PM</div>
-          <div class="detail-sub">The Gallery and River Window</div>
+          <div class="detail-value">4:45 PM</div>
+          <div class="detail-sub">The Veranda</div>
         </div>
         <div class="detail-divider"></div>
         <div class="detail-item">
           <span class="section-label">Reception</span>
-          <div class="detail-value">2:00 PM</div>
-          <div class="detail-sub">The Roof Top</div>
+          <div class="detail-value">6:00 PM</div>
+          <div class="detail-sub">The Grand Ballroom</div>
         </div>
         <div class="detail-divider"></div>
         <div class="detail-item">
           <span class="section-label">Dress Code</span>
           <div class="detail-value">Formal</div>
-          <div class="detail-sub">Soft tones &amp; florals welcome</div>
+          <div class="detail-sub"><a href="/attire" style="color:inherit;">See guidelines</a></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PALETTE STRIP -->
-  <div class="palette-strip">
-    <div class="palette-swatch" style="background:#BED2BC"></div>
-    <div class="palette-swatch" style="background:#EAECC5"></div>
-    <div class="palette-swatch" style="background:#C8BE8C"></div>
-    <div class="palette-swatch" style="background:#B4924C"></div>
-    <div class="palette-swatch" style="background:#C08480"></div>
-    <div class="palette-swatch" style="background:#706E3F"></div>
-    <div class="palette-swatch" style="background:#5D5050"></div>
-    <div class="palette-swatch" style="background:#494E3C"></div>
+  <!-- PALETTE STRIP (now the Dispatch palette) -->
+  <div class="palette-strip" aria-hidden="true">
+    <div class="palette-swatch" style="background:#fbe45b"></div>
+    <div class="palette-swatch" style="background:#c4aa23"></div>
+    <div class="palette-swatch" style="background:#a6d0c8"></div>
+    <div class="palette-swatch" style="background:#2c7c94"></div>
+    <div class="palette-swatch" style="background:#1a4a5a"></div>
+    <div class="palette-swatch" style="background:#a65852"></div>
+    <div class="palette-swatch" style="background:#faf3d4"></div>
   </div>
 
-  <!-- WHITE BUFFER -->
-  <div class="white-bar"></div>
+  <!-- STORY TEASER -->
+  <section class="section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text">
+          <span class="section-label">Our Story</span>
+          <h2>A Love Worth Telling</h2>
+          <div class="divider" style="max-width: 180px; margin-left: 0;">
+            <div class="divider-line"></div>
+            <div class="divider-diamond"></div>
+            <div class="divider-line"></div>
+          </div>
+          <p>It began with a borrowed umbrella and a missed train. Somewhere between the argument about Fitzgerald and the walk home in the rain, something quietly and irrevocably changed.</p>
+          <p>We have been together ever since, disagreeing warmly about the kitchen clock and agreeing on nearly everything that matters.</p>
+          <a href="/our-story" class="btn">Read Our Story</a>
+        </div>
+        <div class="story-ornament">
+          <div class="ornament-box">
+            <div class="ornament-corner tl"></div>
+            <div class="ornament-corner tr"></div>
+            <div class="ornament-corner bl"></div>
+            <div class="ornament-corner br"></div>
+            <span class="ornament-year">2025</span>
+            <span class="ornament-label">Hudson Valley</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- RSVP CTA -->
   <section class="rsvp-cta">
     <div class="container">
       <div class="rsvp-cta-inner">
-        <span class="section-label" style="color:var(--swan-sand)">You're Invited</span>
-        <h2 style="color:var(--swan-cream)">Kindly Confirm Your Attendance</h2>
-        <p style="color:rgba(234,236,197,0.75)">Please respond by January 1st, 2027. Your unique invitation code was printed on your envelope.</p>
-        <a href="/rsvp" class="btn" style="border-color:var(--swan-cream); color:var(--swan-cream);">
+        <span class="section-label" style="color:var(--dispatch-yellow); opacity: 0.85;">You're Invited</span>
+        <h2 style="color:var(--dispatch-cream)">Kindly Confirm Your Attendance</h2>
+        <p style="color:rgba(250,243,212,0.85)">Please respond by May 1st, 2025.
+        Your unique invitation code was printed on your envelope.</p>
+        <a href="/rsvp" class="btn" style="border-color:var(--dispatch-yellow); color:var(--dispatch-yellow);">
           RSVP Now
         </a>
       </div>
@@ -95,62 +122,76 @@ import Layout from '../layouts/Layout.astro';
 <style>
   /* HERO */
   .hero {
-    min-height: 90vh;
+    min-height: 88vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--swan-white);
+    background: var(--dispatch-yellow);
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
   }
   .hero::before {
     content: '';
     position: absolute;
-    inset: 16px;
-    border: 1px solid var(--swan-sand);
+    inset: 18px;
+    border: 3px solid var(--dispatch-teal-deep);
     pointer-events: none;
   }
   .hero::after {
     content: '';
     position: absolute;
-    inset: 22px;
-    border: 1px dotted var(--swan-sage);
+    inset: 26px;
+    border: 1px solid var(--dispatch-teal-deep);
     pointer-events: none;
-    opacity: 0.5;
   }
-  .hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+  .hero-kicker {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--dispatch-terracotta);
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--dispatch-teal-deep);
+    background: var(--dispatch-yellow-soft);
+    font-weight: 500;
+  }
 
   .hero-names {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 300;
-    color: var(--swan-forest);
-    line-height: 1;
-    letter-spacing: 0.02em;
-    margin: 0.5rem 0;
+    font-size: clamp(3.6rem, 9vw, 7rem);
+    font-weight: 900;
+    color: var(--dispatch-teal-deep);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0.4rem 0;
   }
   .hero-amp {
     display: block;
-    font-size: 0.55em;
-    color: var(--swan-blush);
+    font-size: 0.6em;
+    color: var(--dispatch-terracotta);
     font-style: italic;
-    margin: 0.1em 0;
+    font-weight: 400;
+    margin: 0.05em 0;
   }
   .hero-date {
+    font-family: var(--font-mono);
     font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--swan-brown);
-    margin-bottom: 0.2rem;
+    color: var(--dispatch-teal-deep);
+    margin-bottom: 0.4rem;
   }
   .hero-location {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 1.1rem;
-    color: var(--swan-olive);
-    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    color: var(--dispatch-teal);
+    margin-bottom: 2.2rem;
   }
   .hero-actions {
     display: flex;
@@ -161,8 +202,10 @@ import Layout from '../layouts/Layout.astro';
 
   /* DETAILS STRIP */
   .details-strip {
-    background: var(--swan-forest);
-    padding: 2.5rem 0;
+    background: var(--dispatch-teal-deep);
+    padding: 3rem 0;
+    border-top: 4px solid var(--dispatch-teal-deep);
+    border-bottom: 4px solid var(--dispatch-teal-deep);
   }
   .details-grid {
     display: flex;
@@ -173,60 +216,145 @@ import Layout from '../layouts/Layout.astro';
   }
   .detail-item {
     text-align: center;
-    padding: 0.5rem 2.5rem;
+    padding: 0.5rem 2rem;
     flex: 1;
     min-width: 160px;
   }
-  .detail-item .section-label { color: var(--swan-sage); }
+  .detail-item .section-label { color: var(--dispatch-mint); }
   .detail-value {
     font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--swan-cream);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--dispatch-yellow);
     line-height: 1.2;
   }
   .detail-sub {
-    font-size: 0.72rem;
-    color: var(--swan-sand);
-    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--dispatch-cream);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-top: 0.4rem;
   }
+  .detail-sub a { color: inherit; border-bottom: 1px solid var(--dispatch-ochre); }
+  .detail-sub a:hover { color: var(--dispatch-yellow); }
   .detail-divider {
     width: 1px;
-    height: 50px;
-    background: rgba(200,190,140,0.3);
+    height: 56px;
+    background: var(--dispatch-ochre);
+    opacity: 0.5;
     flex-shrink: 0;
   }
 
   /* PALETTE STRIP */
   .palette-strip {
     display: flex;
-    height: 8px;
+    height: 12px;
   }
   .palette-swatch { flex: 1; }
 
-  /* WHITE BAR */
-  .white-bar {
-    background: var(--swan-white);
-    height: 5rem;
+  /* STORY */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4.5rem;
+    align-items: center;
+  }
+  .story-text h2 { margin-bottom: 0.3rem; }
+  .story-text p {
+    color: var(--dispatch-teal-deep);
+    font-size: 1.1rem;
+    font-family: var(--font-serif);
+    line-height: 1.65;
+  }
+  .story-text p::first-letter {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.2em;
+    float: left;
+    line-height: 0.9;
+    margin: 0.05em 0.12em 0 0;
+    color: var(--dispatch-terracotta);
+  }
+  .story-text .btn { margin-top: 1.5rem; }
+
+  .story-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ornament-box {
+    width: 240px;
+    height: 240px;
+    border: 2.5px solid var(--dispatch-teal-deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--dispatch-yellow-soft);
+  }
+  .ornament-corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: var(--dispatch-terracotta);
+    border-style: solid;
+  }
+  .ornament-corner.tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+  .ornament-corner.tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+  .ornament-corner.bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+  .ornament-corner.br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+  .ornament-year {
+    font-family: var(--font-display);
+    font-size: 4.4rem;
+    font-weight: 900;
+    color: var(--dispatch-teal-deep);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .ornament-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--dispatch-teal);
+    margin-top: 0.5rem;
   }
 
   /* RSVP CTA */
   .rsvp-cta {
-    background: var(--swan-blush);
+    background: var(--dispatch-terracotta);
     padding: 5rem 0;
     text-align: center;
+    position: relative;
   }
-  .rsvp-cta-inner { max-width: 560px; margin: 0 auto; }
+  .rsvp-cta::before {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 1.5px solid var(--dispatch-yellow);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .rsvp-cta-inner { max-width: 560px; margin: 0 auto; position: relative; }
   .rsvp-cta-inner h2 { margin-bottom: 0.8rem; }
-  .rsvp-cta-inner p { margin-bottom: 2rem; font-size: 0.9rem; }
+  .rsvp-cta-inner p { margin-bottom: 2rem; font-size: 1rem; font-family: var(--font-serif); }
   .rsvp-cta .btn:hover {
-    background: var(--swan-cream);
-    color: var(--swan-forest) !important;
-    border-color: var(--swan-cream) !important;
+    background: var(--dispatch-yellow) !important;
+    color: var(--dispatch-teal-deep) !important;
+    border-color: var(--dispatch-yellow) !important;
   }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
+    .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .story-ornament { display: none; }
     .detail-divider { display: none; }
     .detail-item { min-width: 140px; }
+    .hero::before { inset: 12px; }
+    .hero::after { inset: 18px; }
   }
 </style>
