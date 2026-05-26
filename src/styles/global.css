@@ -1,208 +1,341 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
 
-/* ────────────────────────────────────────────────────
-   The French Dispatch theme
-   Liberty, Kansas Evening Sun, Hudson Valley Edition
-   ──────────────────────────────────────────────────── */
+/* French Dispatch Theme Variables */
 :root {
-  /* Core palette (mapped onto original variable names so every page inherits) */
-  --swan-sage:    #a6d0c8;  /* Dispatch mint */
-  --swan-brown:   #1a4a5a;  /* deep teal ink, for body text */
-  --swan-sand:    #c4aa23;  /* Dispatch ochre, for rules and borders */
-  --swan-blush:   #a65852;  /* Dispatch terracotta */
-  --swan-forest:  #2c7c94;  /* Dispatch teal, primary dark */
-  --swan-cream:   #faf3d4;  /* pale cream, complements yellow */
-  --swan-gold:    #c4aa23;  /* Dispatch ochre */
-  --swan-olive:   #1f5a6e;  /* darker teal, sub-headings */
-  --swan-bg:      #fbe45b;  /* THE Dispatch yellow */
-  --swan-white:   #fef9e3;  /* pale cream card surface */
+  --swan-sage:    #a6d0c8;
+  --swan-brown:   #4a3f35;
+  --swan-sand:    #c8b44a;
+  --swan-blush:   #a65852;
+  --swan-forest:  #2c7c94;
+  --swan-cream:   #fdf3c2;
+  --swan-gold:    #fbe45b;
+  --swan-olive:   #c4aa23;
+  --swan-bg:      #f6f0d5;
+  --swan-white:   #fefcee;
 
-  /* Semantic aliases used by the new Dispatch components */
-  --dispatch-yellow:     #fbe45b;
-  --dispatch-yellow-soft:#fef0a3;
-  --dispatch-mint:       #a6d0c8;
-  --dispatch-teal:       #2c7c94;
-  --dispatch-teal-deep:  #1a4a5a;
-  --dispatch-ochre:      #c4aa23;
-  --dispatch-terracotta: #a65852;
-  --dispatch-cream:      #faf3d4;
-  --dispatch-ink:        #1a3340;
-
-  /* Typography stack */
-  --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-  --font-serif:   'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Jost', 'Helvetica Neue', sans-serif;
-  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Jost', sans-serif;
 }
 
-/* ── Reset ── */
+/* Reset */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   background: var(--swan-bg);
-  color: var(--dispatch-teal-deep);
-  font-weight: 400;
-  line-height: 1.6;
+  color: var(--swan-forest);
+  font-weight: 300;
+  line-height: 1.7;
   min-height: 100vh;
-  /* Subtle paper grain to evoke print */
-  background-image:
-    radial-gradient(rgba(26, 51, 64, 0.04) 1px, transparent 1px);
-  background-size: 3px 3px;
 }
 
-/* ── Typography ── */
+/* Typography */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.05;
-  color: var(--dispatch-teal-deep);
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--swan-forest);
 }
 
-h1 { font-size: clamp(2.6rem, 5.5vw, 4.4rem); }
-h2 { font-size: clamp(2rem, 3.4vw, 3rem); }
-h3 { font-size: clamp(1.4rem, 2vw, 1.9rem); }
+h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+h3 { font-size: clamp(1.3rem, 2vw, 1.8rem); }
 
-p { margin-bottom: 1rem; font-size: 1.02rem; }
+p { margin-bottom: 1rem; }
 p:last-child { margin-bottom: 0; }
 
-a { color: var(--dispatch-teal); text-decoration: none; transition: color 0.2s; }
-a:hover { color: var(--dispatch-terracotta); }
+a { color: var(--swan-olive); text-decoration: none; }
+a:hover { color: var(--swan-forest); }
 
-::selection { background: var(--dispatch-teal); color: var(--swan-cream); }
-
-/* ── Utility Classes ── */
+/* Utility Classes */
 .container {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.section { padding: 5rem 0; }
+.section {
+  padding: 5rem 0;
+}
 
 .section-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.7rem;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--dispatch-teal);
-  margin-bottom: 0.9rem;
+  color: var(--swan-olive);
+  margin-bottom: 0.8rem;
   display: block;
-  font-weight: 500;
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--dispatch-terracotta);
-  font-weight: 500;
-}
-
-/* ── Decorative divider ── */
 .divider {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin: 1.4rem 0;
-  width: 100%;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 .divider-line {
   flex: 1;
   height: 1px;
-  background: var(--dispatch-teal);
-  opacity: 0.45;
+  background: var(--swan-sand);
 }
 .divider-diamond {
-  width: 7px;
-  height: 7px;
-  background: var(--dispatch-terracotta);
+  width: 6px;
+  height: 6px;
+  background: var(--swan-blush);
   transform: rotate(45deg);
   flex-shrink: 0;
 }
 
-/* Newspaper rule: thick over thin */
-.rule-double {
-  border-top: 3px solid var(--dispatch-teal-deep);
-  border-bottom: 1px solid var(--dispatch-teal-deep);
-  height: 6px;
-  margin: 1.2rem 0;
-}
-
-/* ── Buttons ── */
+/* Buttons */
 .btn {
   display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.72rem;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 0.9rem 2.3rem;
-  border: 1.5px solid var(--dispatch-teal-deep);
-  color: var(--dispatch-teal-deep);
+  padding: 0.85rem 2.2rem;
+  border: 1.5px solid var(--swan-forest);
+  color: var(--swan-forest);
   background: transparent;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-weight: 500;
 }
 .btn:hover {
-  background: var(--dispatch-teal-deep);
-  color: var(--dispatch-yellow);
+  background: var(--swan-forest);
+  color: var(--swan-cream);
 }
 .btn-filled {
-  background: var(--dispatch-teal-deep);
-  color: var(--dispatch-yellow);
+  background: var(--swan-forest);
+  color: var(--swan-cream);
 }
 .btn-filled:hover {
-  background: var(--dispatch-terracotta);
-  color: var(--dispatch-cream);
-  border-color: var(--dispatch-terracotta);
+  background: var(--swan-olive);
+  color: var(--swan-white);
+  border-color: var(--swan-olive);
 }
 
-/* ── Form Elements ── */
+/* Form Elements */
 .form-group { margin-bottom: 1.2rem; }
 
 .form-label {
   display: block;
-  font-family: var(--font-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--dispatch-teal);
-  margin-bottom: 0.45rem;
-  font-weight: 500;
+  color: var(--swan-olive);
+  margin-bottom: 0.4rem;
 }
 
 .form-input {
   width: 100%;
   background: var(--swan-white);
-  border: 1.5px solid var(--dispatch-teal);
-  padding: 0.8rem 1rem;
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  color: var(--dispatch-teal-deep);
+  border: 1.5px solid var(--swan-sand);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--swan-forest);
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s;
 }
-.form-input:focus {
-  border-color: var(--dispatch-terracotta);
-  box-shadow: 0 0 0 3px rgba(166, 88, 82, 0.15);
-}
+.form-input:focus { border-color: var(--swan-olive); }
 
-/* ── Page Header ── */
+/* Page Header */
 .page-header {
   text-align: center;
   padding: 5rem 2rem 3rem;
   background: var(--swan-white);
-  border-bottom: 3px double var(--dispatch-teal-deep);
+  border-bottom: 1px solid var(--swan-sand);
 }
 
-/* ── Cards ── */
+/* Cards */
 .card {
   background: var(--swan-white);
-  border: 1.5px solid var(--dispatch-teal-deep);
+  border: 1px solid var(--swan-sand);
   padding: 2rem;
+}
+
+/* RSVP Form Styles */
+.rsvp-form-wrap {
+  background: var(--swan-white);
+  border: 1px solid var(--swan-sand);
+  padding: 2.5rem;
+}
+
+.guest-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--swan-cream);
+  border: 1px solid var(--swan-sand);
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.guest-badge-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--swan-olive);
+}
+.guest-badge-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--swan-forest);
+  line-height: 1.2;
+}
+.guest-badge-guests {
+  font-size: 0.75rem;
+  color: var(--swan-brown);
+  letter-spacing: 0.08em;
+}
+
+.rsvp-step h2 { margin-bottom: 1.5rem; }
+
+.attendance-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.attendance-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  border: 1.5px solid var(--swan-sand);
+  background: var(--swan-white);
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 4px;
+}
+.attendance-btn:hover { border-color: var(--swan-forest); }
+.attendance-btn.selected {
+  border-color: var(--swan-forest);
+  background: var(--swan-forest);
+}
+.attendance-btn.selected .attendance-btn-title,
+.attendance-btn.selected .attendance-btn-sub {
+  color: var(--swan-cream);
+}
+.attendance-btn-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--swan-forest);
+}
+.attendance-btn-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--swan-brown);
+}
+
+.guest-counter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.counter-btn {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--swan-forest);
+  background: transparent;
+  font-size: 1.2rem;
+  color: var(--swan-forest);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.counter-btn:hover { background: var(--swan-forest); color: var(--swan-cream); }
+.counter-value {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--swan-forest);
+  min-width: 32px;
+  text-align: center;
+}
+.counter-max {
+  font-size: 0.75rem;
+  color: var(--swan-brown);
+  letter-spacing: 0.08em;
+}
+
+.meal-choices {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.meal-btn {
+  padding: 0.5rem 1.4rem;
+  border: 1.5px solid var(--swan-sand);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--swan-brown);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.meal-btn:hover { border-color: var(--swan-forest); color: var(--swan-forest); }
+.meal-btn.selected {
+  background: var(--swan-forest);
+  border-color: var(--swan-forest);
+  color: var(--swan-cream);
+}
+
+.meal-hint {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--swan-brown);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.step-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.step-actions .btn { flex: 1; text-align: center; }
+
+.error-msg {
+  display: none;
+  background: #f8e8e8;
+  border: 1px solid #d4a0a0;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: #8b3a3a;
+  margin-bottom: 1rem;
+}
+.error-msg.visible { display: block; }
+
+.rsvp-done { text-align: center; }
+.done-diamond {
+  font-size: 2rem;
+  color: var(--swan-blush);
+  margin-bottom: 1rem;
+}
+.rsvp-done h2 { margin-bottom: 0.8rem; }
+.rsvp-done p {
+  color: var(--swan-brown);
+  font-size: 0.95rem;
+  max-width: 400px;
+  margin: 0 auto 0.5rem;
+}
+.done-email { font-size: 0.85rem !important; }
+.done-details {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--swan-olive);
+  margin: 1.5rem 0;
 }
