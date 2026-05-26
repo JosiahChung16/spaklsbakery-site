@@ -24,13 +24,13 @@ import Layout from '../layouts/Layout.astro';
         <!-- DRESS CODE CARD -->
         <div class="attire-card">
           <span class="section-label">The Dress Code</span>
-          <h2>Formal</h2>
+          <h2>Garden Formal</h2>
           <div class="divider">
             <div class="divider-line"></div>
             <div class="divider-diamond"></div>
             <div class="divider-line"></div>
           </div>
-          <p>The colors and design are inspired by one of Sarah and Josiah's favorite directors, Wes Anderson. In particular, the theme draws from his film The French Dispatch.</p>
+          <p>The colors and design are inspired by one of Sarah and Josiah’s favorite directors, Wes Anderson. In particular, the theme draws from his film The Swan.</p>
           <ul class="attire-list">
             <li>Suits, blazers, or dress trousers for gentlemen</li>
             <li>Midi or maxi dresses, elegant separates, or dressy jumpsuits for ladies</li>
@@ -41,30 +41,30 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- PALETTE CARD -->
         <div class="attire-card palette-card">
-          <span class="section-label">Dress Code -- Formal</span>
+          <span class="section-label">Dress Code — Garden Formal</span>
           <div class="palette-circles">
             <div class="palette-item">
-              <div class="palette-circle" style="background:#2c7c94; border-color:#2c7c94;"></div>
-              <span class="palette-name">Deep Teal</span>
+              <div class="palette-circle" style="background:#BED2BC; border-color:#BED2BC;"></div>
+              <span class="palette-name">Sage</span>
             </div>
             <div class="palette-item">
-              <div class="palette-circle" style="background:#a6d0c8; border-color:#a6d0c8;"></div>
-              <span class="palette-name">Soft Teal</span>
+              <div class="palette-circle" style="background:#C8BE8C; border-color:#C8BE8C;"></div>
+              <span class="palette-name">Sand</span>
             </div>
             <div class="palette-item">
-              <div class="palette-circle" style="background:#c4aa23; border-color:#c4aa23;"></div>
+              <div class="palette-circle" style="background:#C08480; border-color:#C08480;"></div>
+              <span class="palette-name">Blush</span>
+            </div>
+            <div class="palette-item">
+              <div class="palette-circle" style="background:#B4924C; border-color:#B4924C;"></div>
               <span class="palette-name">Gold</span>
             </div>
             <div class="palette-item">
-              <div class="palette-circle" style="background:#fbe45b; border-color:#c8b44a;"></div>
-              <span class="palette-name">Yellow</span>
-            </div>
-            <div class="palette-item">
-              <div class="palette-circle" style="background:#a65852; border-color:#a65852;"></div>
-              <span class="palette-name">Rust</span>
+              <div class="palette-circle" style="background:#494E3C; border-color:#494E3C;"></div>
+              <span class="palette-name">Forest</span>
             </div>
           </div>
-          <p class="palette-note">We invite you to lean into the rich, cinematic tones of The French Dispatch. Deep teals, warm golds, and earthy rusts are all welcome. Please avoid white, ivory, and black.</p>
+          <p class="palette-note">We invite you to lean into soft, earthy tones that complement the estate gardens. Florals and patterns are warmly welcome. Please avoid white, ivory, and black.</p>
         </div>
 
       </div>
@@ -129,15 +129,15 @@ import Layout from '../layouts/Layout.astro';
     position: relative;
   }
   .attire-list li::before {
-    content: '+';
+    content: '✦';
     position: absolute;
     left: 0;
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     color: var(--swan-blush);
-    top: 0.6rem;
+    top: 0.75rem;
   }
 
-  /* Palette Card */
+  /* ── Palette Card ── */
   .palette-card {
     background: var(--swan-cream);
     display: flex;
@@ -184,7 +184,7 @@ import Layout from '../layouts/Layout.astro';
     margin: 0 !important;
   }
 
-  /* Additional Notes */
+  /* ── Additional Notes ── */
   .attire-notes {
     display: flex;
     align-items: flex-start;
