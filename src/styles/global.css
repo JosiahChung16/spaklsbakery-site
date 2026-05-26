@@ -2,16 +2,16 @@
 
 /* French Dispatch Theme Variables */
 :root {
-  --swan-sage:    #a6d0c8;
-  --swan-brown:   #4a3f35;
-  --swan-sand:    #c8b44a;
-  --swan-blush:   #a65852;
-  --swan-forest:  #2c7c94;
-  --swan-cream:   #fdf3c2;
-  --swan-gold:    #fbe45b;
-  --swan-olive:   #c4aa23;
-  --swan-bg:      #f6f0d5;
-  --swan-white:   #fefcee;
+  --swan-sage:    #88a094;  /* dusty muted sage — rooftops, awnings */
+  --swan-brown:   #3d2f24;  /* warm dark brown */
+  --swan-sand:    #c9a96a;  /* sandstone buff */
+  --swan-blush:   #a8412f;  /* terracotta brick */
+  --swan-forest:  #214a48;  /* deep door-teal — anchor color */
+  --swan-cream:   #f5ead0;  /* warm parchment */
+  --swan-gold:    #d4a017;  /* rich golden mustard */
+  --swan-olive:   #8a7332;  /* deep olive */
+  --swan-bg:      #e6c33b;  /* mustard yellow — the sky */
+  --swan-white:   #faf3da;  /* buttery off-white */
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'Jost', sans-serif;
