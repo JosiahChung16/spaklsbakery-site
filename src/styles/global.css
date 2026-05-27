@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
 
-/* French Dispatch Theme Variables */
+/* French Dispatch Newspaper Theme Variables */
 :root {
-  --swan-sage:    #88a094;  /* dusty muted sage — rooftops, awnings */
-  --swan-brown:   #3d2f24;  /* warm dark brown */
-  --swan-sand:    #c9a96a;  /* sandstone buff */
-  --swan-blush:   #a8412f;  /* terracotta brick */
-  --swan-forest:  #214a48;  /* deep door-teal — anchor color */
-  --swan-cream:   #f5ead0;  /* warm parchment */
-  --swan-gold:    #d4a017;  /* rich golden mustard */
-  --swan-olive:   #8a7332;  /* deep olive */
-  --swan-bg:      #e6c33b;  /* mustard yellow — the sky */
-  --swan-white:   #faf3da;  /* buttery off-white */
+  --swan-sage:    #D9D3C7;  /* light newsprint gray — softer borders */
+  --swan-brown:   #6B6458;  /* editorial gray — body text contrast */
+  --swan-sand:    #C8BC9E;  /* tan — column rules and borders */
+  --swan-blush:   #B5141A;  /* the iconic red accent — diamonds, marks */
+  --swan-forest:  #111010;  /* newspaper black — headlines, primary */
+  --swan-cream:   #F2EBD9;  /* cream — card interiors */
+  --swan-gold:    #E8C84A;  /* color-supplement yellow — sparing use */
+  --swan-olive:   #B5141A;  /* link red — pure French Dispatch accent */
+  --swan-bg:      #F8F4EC;  /* paper white — body background */
+  --swan-white:   #FDFAF3;  /* bright off-white — cards on cream */
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'Jost', sans-serif;
