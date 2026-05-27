@@ -4,9 +4,33 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   description?: string;
+  /** Section label shown in the section rule (e.g. "Today's Edition") */
+  section?: string;
+  /** Italic center line in the section rule */
+  sectionNote?: string;
 }
 
-const { title, description = "Join us to celebrate our wedding day." } = Astro.props;
+const {
+  title,
+  description = "Join us to celebrate our wedding day.",
+  section = "Today's Edition",
+  sectionNote = "Special Nuptial Supplement · March 7, 2027"
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+
+const navItems = [
+  { href: '/',          label: 'Front Page'   },
+  { href: '/schedule',  label: 'Programme'    },
+  { href: '/travel',    label: 'Getting There'},
+  { href: '/attire',    label: 'Dress Notes'  },
+  { href: '/registry',  label: 'Registry'     },
+  { href: '/games',     label: 'Diversions'   },
+  { href: '/faq',       label: 'Letters'      },
+  { href: '/rsvp',      label: 'Reply Card'   },
+];
 ---
 
 <!DOCTYPE html>
@@ -16,194 +40,339 @@ const { title, description = "Join us to celebrate our wedding day." } = Astro.p
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow" />
-    <title>{title} — Our Wedding</title>
+    <title>{title} — The Memphis Dispatch</title>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container">
-        <nav class="nav">
-          <a href="/" class="nav-brand">
-            <span class="nav-brand-names">Josiah &amp; Sarah</span>
-            <span class="nav-brand-date">March 7, 2027</span>
-          </a>
-          <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-          </button>
-          <ul class="nav-links" id="navLinks">
-            <li><a href="/">Home</a></li>
-            <li><a href="/schedule">Schedule</a></li>
-            <li><a href="/travel">Travel</a></li>
-            <li><a href="/attire">Attire</a></li>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/registry">Registry</a></li>
-            <li><a href="/games">Games</a></li>
-            <li><a href="/rsvp" class="nav-rsvp">RSVP</a></li>
-          </ul>
-        </nav>
+
+    <!-- ── TOPBAR ── -->
+    <div class="fd-topbar">
+      <div class="fd-topbar-inner">
+        <span class="fd-topbar-side">Memphis, Tennessee · March 7</span>
+        <span class="fd-topbar-center">★ A Special Edition ★</span>
+        <span class="fd-topbar-side fd-topbar-right">Fair · 68° · Light Winds</span>
+      </div>
+    </div>
+
+    <!-- ── MASTHEAD ── -->
+    <header class="fd-masthead">
+      <div class="fd-mast-eyebrow">of the Bluff City Evening Sun — Wedding Supplement</div>
+      <a href="/" class="fd-mast-title">The Memphis Dispatch</a>
+      <div class="fd-mast-subtitle">Recording a marriage between two souls of particular note</div>
+      <div class="fd-mast-meta">
+        <span>Vol. XXVII, No. 1</span>
+        <span>Josiah &amp; Sarah — A Marriage Announcement</span>
+        <span>One Copy, One Reading</span>
       </div>
     </header>
 
-    <main>
+    <!-- ── SECTION RULE ── -->
+    <div class="fd-section-rule">
+      <span class="fd-section-rule-label">All Stories True</span>
+      <div class="fd-section-rule-line"></div>
+      <span class="fd-section-rule-center">{section} · {sectionNote}</span>
+      <div class="fd-section-rule-line"></div>
+      <span class="fd-section-rule-label">No Refunds Issued</span>
+    </div>
+
+    <!-- ── NAVIGATION (sections of the paper) ── -->
+    <nav class="fd-nav">
+      <div class="fd-nav-inner">
+        <button class="fd-nav-toggle" id="navToggle" aria-label="Toggle sections">Sections ▾</button>
+        <ul class="fd-nav-list" id="navList">
+          {navItems.map(item => (
+            <li>
+              <a href={item.href} class:list={[ 'fd-nav-link', { active: isActive(item.href) } ]}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="fd-main">
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-inner">
-          <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-diamond"></div>
-            <div class="divider-line"></div>
-          </div>
-          <p class="footer-names">Josiah &amp; Sarah</p>
-          <p class="footer-date">March 7, 2027 · Memphis, Tennessee</p>
-          <p class="footer-note">We can't wait to celebrate with you.</p>
+    <!-- ── FOOTER ── -->
+    <footer class="fd-footer">
+      <div class="fd-footer-rule"></div>
+      <div class="fd-footer-inner">
+        <div class="fd-footer-left">
+          Memphis, Tenn.<br />
+          <em>Est. March 7, 2027</em>
+        </div>
+        <div class="fd-footer-center">
+          "Try to make it good."<br />
+          <span class="fd-footer-attrib">— The Editors</span>
+        </div>
+        <div class="fd-footer-right">
+          All Stories True<br />
+          <em>No Refunds Issued</em>
         </div>
       </div>
+      <div class="fd-footer-rule"></div>
+      <div class="fd-footer-coda">
+        Josiah &amp; Sarah · Printed with affection · MMXXVII
+      </div>
     </footer>
+
   </body>
 </html>
 
 <style>
-  /* ── Header ── */
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--swan-white);
-    border-bottom: 1px solid var(--swan-sand);
+  /* ── TOPBAR ── */
+  .fd-topbar {
+    border-bottom: 1px solid var(--fd-black);
+    background: var(--fd-paper);
   }
-
-  .nav {
-    display: flex;
+  .fd-topbar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 0;
-    gap: 2rem;
-  }
-
-  .nav-brand {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-  .nav-brand-names {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--swan-forest);
-    letter-spacing: 0.03em;
-    line-height: 1.1;
-  }
-  .nav-brand-date {
-    font-size: 0.65rem;
+    padding: 5px 1.5rem;
+    font-size: 0.62rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--swan-olive);
+    color: var(--fd-gray);
+    font-weight: 700;
+  }
+  .fd-topbar-center {
+    color: var(--fd-red);
+    letter-spacing: 0.22em;
+  }
+  .fd-topbar-right { text-align: right; }
+
+  /* ── MASTHEAD ── */
+  .fd-masthead {
+    padding: 1rem 1.5rem 0.4rem;
+    text-align: center;
+    background: var(--fd-paper);
+    border-bottom: 6px double var(--fd-black);
+  }
+  .fd-mast-eyebrow {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--fd-gray);
+    border-top: 0.5px solid var(--fd-black);
+    border-bottom: 0.5px solid var(--fd-black);
+    padding: 4px 0;
+    margin-bottom: 0.4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fd-mast-title {
+    display: block;
+    font-family: var(--font-mast);
+    font-weight: 400;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: 1;
+    color: var(--fd-black);
+    letter-spacing: 0.01em;
+    margin: 0.2rem 0 0.2rem;
+    border-bottom: none;
+    text-decoration: none;
+  }
+  .fd-mast-title:hover { color: var(--fd-red); }
+  .fd-mast-subtitle {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--fd-gray);
+    margin-bottom: 0.6rem;
+  }
+  .fd-mast-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid var(--fd-black);
+    padding-top: 6px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fd-gray);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .fd-mast-meta span:nth-child(2) {
+    font-family: var(--font-italic);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--fd-black);
+    font-weight: 400;
+    font-size: 0.85rem;
   }
 
-  .nav-links {
+  /* ── NAVIGATION ── */
+  .fd-nav {
+    background: var(--fd-black);
+    color: var(--fd-cream);
+  }
+  .fd-nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .fd-nav-list {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
-  .nav-links a {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
+  .fd-nav-link {
+    display: inline-block;
+    padding: 0.7rem 0.3rem;
+    font-family: var(--font-body);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--swan-brown);
-    transition: color 0.2s;
+    color: var(--fd-cream);
+    border: none;
+    transition: color 0.15s;
   }
-  .nav-links a:hover { color: var(--swan-forest); }
-
-  .nav-rsvp {
-    border: 1.5px solid var(--swan-forest) !important;
-    padding: 0.4rem 1rem;
-    color: var(--swan-forest) !important;
-    transition: all 0.2s !important;
+  .fd-nav-link:hover { color: var(--fd-yellow); }
+  .fd-nav-link.active {
+    color: var(--fd-yellow);
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
-  .nav-rsvp:hover {
-    background: var(--swan-forest);
-    color: var(--swan-cream) !important;
-  }
-
-  /* ── Mobile toggle ── */
-  .nav-toggle {
+  .fd-nav-toggle {
     display: none;
-    flex-direction: column;
-    gap: 5px;
     background: none;
     border: none;
+    color: var(--fd-cream);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.8rem 0;
     cursor: pointer;
-    padding: 4px;
-  }
-  .nav-toggle span {
-    display: block;
-    width: 22px;
-    height: 1.5px;
-    background: var(--swan-forest);
-    transition: all 0.2s;
+    width: 100%;
+    text-align: left;
   }
 
-  /* ── Footer ── */
-  .site-footer {
-    background: var(--swan-forest);
-    padding: 3rem 0;
+  /* ── MAIN ── */
+  .fd-main { background: var(--fd-paper); }
+
+  /* ── FOOTER ── */
+  .fd-footer {
+    background: var(--fd-paper);
+    border-top: 1px solid var(--fd-black);
+    padding: 1.5rem 1.5rem 2rem;
     margin-top: 4rem;
   }
-  .footer-inner {
-    text-align: center;
+  .fd-footer-rule {
+    max-width: 1080px;
+    margin: 0 auto;
+    height: 0;
+    border-top: 3px double var(--fd-black);
   }
-  .footer-inner .divider-line { background: rgba(234,236,197,0.2); }
-  .footer-inner .divider-diamond { background: var(--swan-blush); }
-
-  .footer-names {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    color: var(--swan-cream);
-    margin: 1rem 0 0.2rem;
+  .fd-footer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    align-items: center;
+    padding: 1.2rem 0;
+    gap: 1rem;
   }
-  .footer-date {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
+  .fd-footer-left {
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--swan-sand);
-    margin-bottom: 0.5rem;
+    color: var(--fd-gray);
+    line-height: 1.6;
   }
-  .footer-note {
+  .fd-footer-left em { text-transform: none; letter-spacing: 0.04em; color: var(--fd-black); font-size: 0.85rem; }
+  .fd-footer-center {
+    text-align: center;
     font-family: var(--font-display);
     font-style: italic;
-    color: rgba(234,236,197,0.6);
-    font-size: 1rem;
-    margin: 0;
+    font-size: 1.1rem;
+    color: var(--fd-black);
+    line-height: 1.5;
+  }
+  .fd-footer-attrib {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--fd-gray);
+  }
+  .fd-footer-right {
+    text-align: right;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fd-gray);
+    line-height: 1.6;
+  }
+  .fd-footer-right em { text-transform: none; letter-spacing: 0.04em; color: var(--fd-black); font-size: 0.85rem; }
+  .fd-footer-coda {
+    max-width: 1080px;
+    margin: 1rem auto 0;
+    text-align: center;
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--fd-gray);
   }
 
-  /* ── Responsive ── */
-  @media (max-width: 768px) {
-    .nav-toggle { display: flex; }
-
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--swan-white);
-      flex-direction: column;
-      padding: 1.5rem 2rem;
-      gap: 1.2rem;
-      border-bottom: 1px solid var(--swan-sand);
-      align-items: flex-start;
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .fd-topbar-inner {
+      grid-template-columns: 1fr;
+      gap: 2px;
+      text-align: center;
+      font-size: 0.56rem;
     }
-    .nav-links.open { display: flex; }
+    .fd-topbar-right { text-align: center; }
+
+    .fd-mast-meta {
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .fd-nav-toggle { display: block; }
+    .fd-nav-list {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0.5rem 0 1rem;
+      gap: 0;
+    }
+    .fd-nav-list.open { display: flex; }
+    .fd-nav-link {
+      width: 100%;
+      padding: 0.6rem 0;
+      border-bottom: 0.5px solid rgba(242,235,217,0.2);
+    }
+
+    .fd-footer-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .fd-footer-left, .fd-footer-right { text-align: center; }
   }
 </style>
 
 <script>
   const toggle = document.getElementById('navToggle');
-  const links = document.getElementById('navLinks');
+  const list = document.getElementById('navList');
   toggle?.addEventListener('click', () => {
-    links?.classList.toggle('open');
+    list?.classList.toggle('open');
   });
 </script>
