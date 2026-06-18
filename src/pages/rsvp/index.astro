@@ -12,7 +12,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="divider-diamond"></div>
         <div class="divider-line"></div>
       </div>
-      <p class="header-sub">Enter your last name and the invitation code from your invitation email to access your RSVP.</p>
+      <p class="header-sub">Enter the invitation code from your invitation email to access your RSVP.</p>
     </div>
   </section>
 
@@ -22,22 +22,9 @@ import Layout from '../../layouts/Layout.astro';
 
         <div class="entry-card" id="entryCard">
           <span class="section-label">Step One</span>
-          <h2>Locate Your Invitation</h2>
+          <h2>Enter Your Code</h2>
 
           <form class="entry-form" id="entryForm">
-            <div class="form-group">
-              <label class="form-label" for="lastName">Last Name</label>
-              <input
-                class="form-input"
-                type="text"
-                id="lastName"
-                name="lastName"
-                placeholder="e.g. Whitmore"
-                autocomplete="family-name"
-                required
-              />
-            </div>
-
             <div class="form-group">
               <label class="form-label" for="inviteCode">Invitation Code</label>
               <input
@@ -45,8 +32,9 @@ import Layout from '../../layouts/Layout.astro';
                 type="text"
                 id="inviteCode"
                 name="inviteCode"
-                placeholder="e.g. WHI-4829"
+                placeholder="e.g. Robin"
                 autocomplete="off"
+                autocapitalize="characters"
                 required
               />
             </div>
@@ -67,7 +55,7 @@ import Layout from '../../layouts/Layout.astro';
 
         <div class="attempts-note">
           <span class="section-label">Having trouble?</span>
-          <p>Your last name and invitation code were included in the invitation email we sent you. Everyone invited from your household will appear once you log in, so you can reply for your whole family in one place. If you continue to have trouble, please reach out directly.</p>
+          <p>Your invitation code was included in the invitation email we sent you. Everyone in your household shares the same code, so any family member can log in to view or update your household's response. If you continue to have trouble, please reach out directly.</p>
         </div>
 
       </div>
@@ -76,19 +64,14 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <script>
-  import { createClient } from '@supabase/supabase-js';
-
-  const supabase = createClient(
-    import.meta.env.PUBLIC_SUPABASE_URL,
-    import.meta.env.PUBLIC_SUPABASE_ANON_KEY
-  );
+  const FUNCTION_URL = `${import.meta.env.PUBLIC_SUPABASE_URL}/functions/v1/validate-invite`;
+  const ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
   const form = document.getElementById('entryForm') as HTMLFormElement;
   const errorMsg = document.getElementById('errorMsg') as HTMLDivElement;
   const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
 
-  const existingGuest = sessionStorage.getItem('wedding_invitation');
-  if (existingGuest) {
+  if (sessionStorage.getItem('wedding_session')) {
     window.location.href = '/rsvp/confirm';
   }
 
@@ -96,28 +79,44 @@ import Layout from '../../layouts/Layout.astro';
     e.preventDefault();
     errorMsg.classList.remove('visible');
 
-    const lastName = (document.getElementById('lastName') as HTMLInputElement).value.trim();
     const inviteCode = (document.getElementById('inviteCode') as HTMLInputElement).value.trim();
 
     submitBtn.textContent = 'Checking...';
     submitBtn.disabled = true;
 
-    const { data, error } = await supabase
-      .from('invitations')
-      .select('id, last_name, invite_code, email')
-      .ilike('last_name', lastName)
-      .ilike('invite_code', inviteCode)
-      .single();
+    try {
+      const res = await fetch(FUNCTION_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${ANON_KEY}`,
+        },
+        body: JSON.stringify({ invite_code: inviteCode }),
+      });
 
-    if (error || !data) {
-      errorMsg.textContent = 'Invalid name or code. Please try again.';
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        errorMsg.textContent = data.error || 'That code was not found. Please try again.';
+        errorMsg.classList.add('visible');
+        submitBtn.textContent = 'Access My Invitation';
+        submitBtn.disabled = false;
+        return;
+      }
+
+      // Store the code + loaded household/guests for the confirm page
+      sessionStorage.setItem('wedding_session', JSON.stringify({
+        invite_code: inviteCode,
+        household: data.household,
+        guests: data.guests,
+      }));
+      window.location.href = '/rsvp/confirm';
+
+    } catch (_err) {
+      errorMsg.textContent = 'Something went wrong. Please check your connection and try again.';
       errorMsg.classList.add('visible');
       submitBtn.textContent = 'Access My Invitation';
       submitBtn.disabled = false;
-      return;
     }
-
-    sessionStorage.setItem('wedding_invitation', JSON.stringify(data));
-    window.location.href = '/rsvp/confirm';
   });
 </script>

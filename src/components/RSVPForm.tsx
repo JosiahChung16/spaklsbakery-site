@@ -1,26 +1,31 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
-
-type Invitation = {
-  id: string;
-  last_name: string;
-  invite_code: string;
-  email: string | null;
-};
 
 type Guest = {
   id: string;
-  invitation_id: string;
   full_name: string;
   rsvp_status: string;
   meal_choice: string | null;
   dietary_notes: string | null;
 };
 
+type Household = {
+  id: string;
+  last_name: string;
+  email: string | null;
+};
+
+type Session = {
+  invite_code: string;
+  household: Household;
+  guests: Guest[];
+};
+
 const MEALS = ['Meat', 'Vegetarian'];
+const SUBMIT_URL = `${import.meta.env.PUBLIC_SUPABASE_URL}/functions/v1/submit-rsvp`;
+const ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
 export default function RSVPForm() {
-  const [invitation, setInvitation] = useState<Invitation | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [guests, setGuests] = useState<Guest[]>([]);
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(true);
@@ -29,32 +34,17 @@ export default function RSVPForm() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const stored = sessionStorage.getItem('wedding_invitation');
+    const stored = sessionStorage.getItem('wedding_session');
     if (!stored) {
       window.location.href = '/rsvp';
       return;
     }
-    const inv: Invitation = JSON.parse(stored);
-    setInvitation(inv);
-    setEmail(inv.email || '');
-    loadGuests(inv.id);
-  }, []);
-
-  const loadGuests = async (invitationId: string) => {
-    const { data, error: err } = await supabase
-      .from('guests')
-      .select('*')
-      .eq('invitation_id', invitationId)
-      .order('created_at', { ascending: true });
-
-    if (err || !data) {
-      setError('We had trouble loading your guest list. Please refresh and try again.');
-      setLoading(false);
-      return;
-    }
-    setGuests(data as Guest[]);
+    const s: Session = JSON.parse(stored);
+    setSession(s);
+    setGuests(s.guests);
+    setEmail(s.household.email || '');
     setLoading(false);
-  };
+  }, []);
 
   const updateGuest = (id: string, changes: Partial<Guest>) => {
     setGuests((prev) => prev.map((g) => (g.id === id ? { ...g, ...changes } : g)));
@@ -62,51 +52,59 @@ export default function RSVPForm() {
 
   const setAttendance = (id: string, status: 'attending' | 'declined') => {
     const changes: Partial<Guest> = { rsvp_status: status };
-    if (status === 'declined') {
-      changes.meal_choice = null;
-    }
+    if (status === 'declined') changes.meal_choice = null;
     updateGuest(id, changes);
   };
 
   const allAnswered = guests.every((g) => g.rsvp_status === 'attending' || g.rsvp_status === 'declined');
-  const attendingNeedMeal = guests.filter(
-    (g) => g.rsvp_status === 'attending' && !g.meal_choice
-  );
+  const attendingNeedMeal = guests.filter((g) => g.rsvp_status === 'attending' && !g.meal_choice);
   const canSubmit = allAnswered && attendingNeedMeal.length === 0;
 
   const submitAll = async () => {
-    if (!invitation) return;
+    if (!session) return;
     setSaving(true);
     setError('');
 
-    const updates = guests.map((g) =>
-      supabase
-        .from('guests')
-        .update({
-          rsvp_status: g.rsvp_status,
-          meal_choice: g.rsvp_status === 'attending' ? g.meal_choice : null,
-          dietary_notes: g.dietary_notes || null,
-          updated_at: new Date().toISOString(),
-        })
-        .eq('id', g.id)
-    );
+    try {
+      const res = await fetch(SUBMIT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${ANON_KEY}`,
+        },
+        body: JSON.stringify({
+          invite_code: session.invite_code,
+          email,
+          guests: guests.map((g) => ({
+            id: g.id,
+            rsvp_status: g.rsvp_status,
+            meal_choice: g.meal_choice,
+            dietary_notes: g.dietary_notes,
+          })),
+        }),
+      });
 
-    const emailUpdate = supabase
-      .from('invitations')
-      .update({ email: email || null })
-      .eq('id', invitation.id);
+      const data = await res.json();
 
-    const results = await Promise.all([...updates, emailUpdate]);
-    const failed = results.find((r) => r.error);
+      if (!res.ok || data.error) {
+        setError(data.error || 'Something went wrong saving your RSVP. Please try again.');
+        setSaving(false);
+        return;
+      }
 
-    if (failed) {
-      setError('Something went wrong saving your RSVP. Please try again.');
+      // Update the stored session so a re-open shows saved state
+      sessionStorage.setItem('wedding_session', JSON.stringify({
+        ...session,
+        household: { ...session.household, email },
+        guests,
+      }));
+
       setSaving(false);
-      return;
+      setDone(true);
+    } catch (_err) {
+      setError('Something went wrong. Please check your connection and try again.');
+      setSaving(false);
     }
-
-    setSaving(false);
-    setDone(true);
   };
 
   if (loading) {
@@ -124,7 +122,7 @@ export default function RSVPForm() {
 
       <div className="guest-badge">
         <span className="guest-badge-label">Invitation for</span>
-        <span className="guest-badge-name">The {invitation?.last_name} Household</span>
+        <span className="guest-badge-name">The {session?.household.last_name} Household</span>
         <span className="guest-badge-guests">{guests.length} guest{guests.length !== 1 ? 's' : ''} invited</span>
       </div>
 
