@@ -113,6 +113,7 @@ a:hover { color: var(--swan-gold); }
   color: var(--swan-cream);
   border-color: var(--swan-olive);
 }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* ── Form Elements ── */
 .form-group { margin-bottom: 1.2rem; }
@@ -162,26 +163,13 @@ a:hover { color: var(--swan-gold); }
   padding: 2rem;
 }
 
-/* ── Content Prose (shared by info pages) ── */
-.prose {
-  max-width: 680px;
-  margin: 0 auto;
-}
-.prose p {
-  color: var(--swan-brown);
-  font-size: 1rem;
-  margin-bottom: 1.3rem;
-}
-.prose h3 {
-  margin: 2.5rem 0 0.8rem;
-  color: var(--swan-forest);
-}
+/* ── Content Prose (info pages) ── */
+.prose { max-width: 680px; margin: 0 auto; }
+.prose p { color: var(--swan-brown); font-size: 1rem; margin-bottom: 1.3rem; }
+.prose h3 { margin: 2.5rem 0 0.8rem; color: var(--swan-forest); }
 
 /* ── Timeline (schedule) ── */
-.timeline {
-  max-width: 620px;
-  margin: 0 auto;
-}
+.timeline { max-width: 620px; margin: 0 auto; }
 .timeline-item {
   display: flex;
   gap: 1.5rem;
@@ -209,18 +197,10 @@ a:hover { color: var(--swan-gold); }
 .timeline-event { font-family: var(--font-display); font-size: 1.3rem; color: var(--swan-forest); }
 .timeline-loc { font-size: 0.85rem; color: var(--swan-brown); letter-spacing: 0.05em; }
 
-/* ── FAQ ── */
+/* ── FAQ (simple) ── */
 .faq-list { max-width: 680px; margin: 0 auto; }
-.faq-item {
-  border-bottom: 1px solid var(--swan-sand);
-  padding: 1.5rem 0;
-}
-.faq-q {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  color: var(--swan-forest);
-  margin-bottom: 0.5rem;
-}
+.faq-item { border-bottom: 1px solid var(--swan-sand); padding: 1.5rem 0; }
+.faq-q { font-family: var(--font-display); font-size: 1.3rem; color: var(--swan-forest); margin-bottom: 0.5rem; }
 .faq-a { color: var(--swan-brown); font-size: 0.95rem; }
 
 /* ── Dress code swatches ── */
@@ -281,7 +261,28 @@ a:hover { color: var(--swan-gold); }
   border: none;
 }
 
-/* ── RSVP Form Styles ── */
+/* ════════════════════════════════════════
+   RSVP — ENTRY PAGE
+════════════════════════════════════════ */
+.rsvp-entry-wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.entry-card { background: var(--swan-white); border: 1px solid var(--swan-sand); padding: 2.5rem; }
+.entry-card h2 { margin-bottom: 1.5rem; }
+.entry-card .btn { width: 100%; text-align: center; }
+.forgot-link { margin-top: 1rem; text-align: center; font-size: 0.78rem; font-style: italic; color: var(--swan-brown); }
+.forgot-link a { color: var(--swan-olive); }
+.attempts-note { padding-top: 0.5rem; }
+.attempts-note p { font-size: 0.85rem; color: var(--swan-brown); line-height: 1.7; }
+
+/* ════════════════════════════════════════
+   RSVP — FORM WRAPPER & BADGE
+════════════════════════════════════════ */
 .rsvp-form-wrap {
   background: var(--swan-white);
   border: 1px solid var(--swan-sand);
@@ -312,55 +313,66 @@ a:hover { color: var(--swan-gold); }
 }
 .guest-badge-guests { font-size: 0.75rem; color: var(--swan-brown); letter-spacing: 0.08em; }
 
-.rsvp-step h2 { margin-bottom: 1.5rem; }
+.rsvp-step h2 { margin-bottom: 0.6rem; }
+.rsvp-intro { font-size: 0.9rem; color: var(--swan-brown); margin-bottom: 1.5rem; }
 
-.attendance-choices {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+/* ════════════════════════════════════════
+   RSVP — PER-GUEST CARDS
+════════════════════════════════════════ */
+.guest-card {
+  border: 1px solid var(--swan-sand);
+  background: var(--swan-bg);
+  padding: 1.2rem 1.3rem;
+  margin-bottom: 1rem;
 }
-.attendance-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.5rem 1rem;
+.guest-card-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--swan-forest);
+  margin-bottom: 0.8rem;
+}
+
+.guest-attendance { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.attend-pill {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.6rem 1rem;
   border: 1.5px solid var(--swan-sand);
   background: var(--swan-white);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--swan-brown);
   cursor: pointer;
-  transition: all 0.2s;
-  gap: 4px;
-}
-.attendance-btn:hover { border-color: var(--swan-forest); }
-.attendance-btn.selected { border-color: var(--swan-forest); background: var(--swan-forest); }
-.attendance-btn.selected .attendance-btn-title,
-.attendance-btn.selected .attendance-btn-sub { color: var(--swan-cream); }
-.attendance-btn-title { font-family: var(--font-display); font-size: 1rem; color: var(--swan-forest); }
-.attendance-btn-sub { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--swan-brown); }
-
-.guest-counter { display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; }
-.counter-btn {
-  width: 32px;
-  height: 32px;
-  border: 1.5px solid var(--swan-forest);
-  background: transparent;
-  font-size: 1.2rem;
-  color: var(--swan-forest);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: all 0.15s;
 }
-.counter-btn:hover { background: var(--swan-forest); color: var(--swan-cream); }
-.counter-value {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  color: var(--swan-forest);
-  min-width: 32px;
-  text-align: center;
+.attend-pill:hover { border-color: var(--swan-forest); color: var(--swan-forest); }
+.attend-pill.on {
+  background: var(--swan-forest);
+  border-color: var(--swan-forest);
+  color: var(--swan-cream);
 }
-.counter-max { font-size: 0.75rem; color: var(--swan-brown); letter-spacing: 0.08em; }
+.attend-pill.decline.on {
+  background: var(--swan-stone);
+  border-color: var(--swan-stone);
+  color: var(--swan-cream);
+}
+
+.guest-meal {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--swan-sand);
+}
+.guest-meal-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--swan-olive);
+  margin-bottom: 0.5rem;
+}
+.guest-dietary { margin-top: 0.75rem; }
 
 .meal-choices { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
 .meal-btn {
@@ -378,29 +390,21 @@ a:hover { color: var(--swan-gold); }
 .meal-btn:hover { border-color: var(--swan-forest); color: var(--swan-forest); }
 .meal-btn.selected { background: var(--swan-forest); border-color: var(--swan-forest); color: var(--swan-cream); }
 
+.household-email { margin-top: 2rem; }
+
 .meal-hint {
   font-size: 0.78rem;
   font-style: italic;
   color: var(--swan-brown);
-  margin-top: 0.5rem;
+  margin: 0.5rem 0 1rem;
   text-align: center;
 }
 
-.step-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
-.step-actions .btn { flex: 1; text-align: center; }
+.rsvp-submit { width: 100%; text-align: center; margin-top: 0.5rem; }
 
-.error-msg {
-  display: none;
-  background: #f8e8e8;
-  border: 1px solid #d4a0a0;
-  padding: 0.75rem 1rem;
-  font-size: 0.85rem;
-  color: #8b3a3a;
-  margin-bottom: 1rem;
-  line-height: 1.5;
-}
-.error-msg.visible { display: block; }
-
+/* ════════════════════════════════════════
+   RSVP — DONE / CONFIRMATION
+════════════════════════════════════════ */
 .rsvp-done { text-align: center; }
 .done-diamond { font-size: 2rem; color: var(--swan-blush); margin-bottom: 1rem; }
 .rsvp-done h2 { margin-bottom: 0.8rem; }
@@ -417,23 +421,22 @@ a:hover { color: var(--swan-gold); }
   margin: 1.5rem 0;
 }
 
-/* ── RSVP entry page ── */
-.rsvp-entry-wrap {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 5rem;
-  align-items: start;
-  max-width: 820px;
-  margin: 0 auto;
+/* ── Error message ── */
+.error-msg {
+  display: none;
+  background: #f8e8e8;
+  border: 1px solid #d4a0a0;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: #8b3a3a;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
-.entry-card { background: var(--swan-white); border: 1px solid var(--swan-sand); padding: 2.5rem; }
-.entry-card h2 { margin-bottom: 1.5rem; }
-.entry-card .btn { width: 100%; text-align: center; }
-.forgot-link { margin-top: 1rem; text-align: center; font-size: 0.78rem; font-style: italic; color: var(--swan-brown); }
-.forgot-link a { color: var(--swan-olive); }
-.attempts-note { padding-top: 0.5rem; }
-.attempts-note p { font-size: 0.85rem; color: var(--swan-brown); line-height: 1.7; }
+.error-msg.visible { display: block; }
 
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
 @media (max-width: 768px) {
   .rsvp-entry-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
 }
