@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Tennessee River Critter Guide</title>
+<meta name="description" content="Track every critter you spot at the Tennessee Aquarium — check them off, read a fun fact, and unlock achievements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#88C9A1;
+    --green-dark:#68B893;
+    --pink:#FEBDC3;
+    --pink-dark:#EF758A;
+    --teal:#7CC9C3;
+    --teal-dark:#017C74;
+    --cream:#F8EEBC;
+    --cream-light:#FFF9E5;
+    --yellow:#FCEA64;
+    --yellow-dark:#F5C24C;
+    --sage:#A4D4A2;
+    --coral:#FF7C69;
+    --coral-dark:#C4432B;
+    --brown:#786951;
+
+    --ink:var(--teal-dark);         /* deep teal doubles as primary text color — strong contrast, on-brand */
+    --wash:var(--cream);
+    --paper:var(--cream-light);
+    --gold:var(--yellow-dark);
+    --line: rgba(1,124,116,0.18);
+    --radius: 14px;
+    --shadow: 0 6px 18px rgba(1,124,116,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--wash);
+    background-image:
+      linear-gradient(rgba(255,249,229,0.82), rgba(255,249,229,0.82)),
+      url('leaf-bg.svg');
+    background-repeat: repeat;
+    background-size: auto, 420px auto;
+    color:var(--ink);
+    font-family:'Nunito', -apple-system, sans-serif;
+    padding-bottom:96px; /* room for sticky progress bar */
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em; }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:flex-end;
+    padding:14px 24px;
+    border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:20;
+    background:rgba(255,249,229,0.88);
+    backdrop-filter: blur(6px);
+  }
+  .reset-btn{
+    background:none; border:1px solid var(--line); color:var(--ink);
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    padding:7px 12px; border-radius:100px; cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+  }
+  .reset-btn:hover{ background:var(--ink); color:#fff; border-color:var(--ink); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    max-width:900px; margin:0 auto; padding:64px 24px 40px;
+    display:flex; align-items:flex-end; justify-content:space-between; gap:28px;
+    flex-wrap:wrap-reverse;
+  }
+  .hero-text{ flex:1 1 420px; text-align:left; }
+  .hero .eyebrow{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    text-transform:uppercase; letter-spacing:0.12em; color:var(--ink);
+    background:rgba(46,111,110,0.1); padding:5px 10px; border-radius:100px; margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:clamp(1.9rem, 4.6vw, 3rem);
+    line-height:1.08; margin:0 0 10px; color:var(--ink);
+  }
+  .hero .tagline{
+    font-family:'Nunito', sans-serif; font-style:italic; font-weight:700;
+    font-size:1.05rem; color:var(--ink); margin:0 0 14px;
+  }
+  .hero p{ font-size:1.05rem; line-height:1.6; color:rgba(1,124,116,0.78); max-width:56ch; margin:0; }
+  .hero-owl{
+    width:190px; height:auto; flex-shrink:0;
+    filter:drop-shadow(0 12px 20px rgba(1,124,116,0.22));
+  }
+
+  /* ---------- section ---------- */
+  .section{ max-width:960px; margin:0 auto; padding:36px 24px 8px; }
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    border-bottom:1px solid var(--line); padding-bottom:10px; margin-bottom:20px;
+  }
+  .section-head h2{
+    font-family:'Fredoka', sans-serif; font-size:1.5rem; font-weight:600; margin:0;
+  }
+  .section-count{ font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:var(--ink); white-space:nowrap;}
+
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:16px;
+  }
+  .grid[data-section="fish"]  { --accent:var(--teal);   --accent-dark:var(--teal-dark); }
+  .grid[data-section="sea"]   { --accent:var(--pink);   --accent-dark:var(--pink-dark); }
+  .grid[data-section="bugs"]  { --accent:var(--yellow); --accent-dark:var(--brown); }
+  .grid[data-section="locals"]{ --accent:var(--green);  --accent-dark:var(--green-dark); }
+
+  /* ---------- card ---------- */
+  .card{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px; cursor:pointer; text-align:left; width:100%;
+    font:inherit; color:inherit; box-shadow:var(--shadow);
+    transition:transform .15s ease, box-shadow .15s ease;
+    position:relative; overflow:hidden;
+  }
+  .card:hover{ transform:translateY(-2px); }
+  .card:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
+  .card-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;}
+  .icon-wrap{
+    font-size:2.1rem; line-height:1; color:var(--ink);
+    display:inline-flex; align-items:center; justify-content:center;
+    filter:grayscale(1) contrast(0.75) brightness(0.55);
+    transition:filter .4s ease;
+  }
+  .icon-wrap svg{ display:block; width:34px; height:auto; }
+  .card.found .icon-wrap{ filter:none; }
+  .status-dot{
+    width:9px; height:9px; border-radius:50%; background:rgba(1,124,116,0.25);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .card.found .status-dot{ background:var(--gold); transform:scale(1.2); }
+  .card h3{
+    font-family:'Baloo 2', sans-serif; font-size:1.05rem; margin:0 0 4px; font-weight:600;
+    color: rgba(1,124,116,0.55);
+    transition:color .3s ease;
+  }
+  .card.found h3{ color:var(--ink); }
+  .card .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.64rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.06em;
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--ink); color:#fff;
+    padding:4px 10px 4px 8px; border-radius:100px;
+  }
+  .card .tag::before{
+    content:""; width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0;
+  }
+  .card .status-label{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:rgba(1,124,116,0.4); margin-top:10px;}
+  .card.found .status-label{ color:var(--ink); font-weight:700; }
+
+  .detail{
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+  }
+  .card.found .detail{ max-height:340px; margin-top:12px; }
+  .detail-inner{ border-top:1px dashed var(--line); padding-top:12px; }
+  .fun-fact{ font-size:0.88rem; line-height:1.55; color:rgba(1,124,116,0.85); margin:0 0 12px; }
+  .fun-fact::before{ content:"✦ "; color:var(--gold); }
+
+  .photo-zone{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .photo-thumb{
+    width:52px; height:52px; border-radius:8px; object-fit:cover; border:1px solid var(--line);
+  }
+  .upload-btn, .remove-btn{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem;
+    background:transparent; border:1px solid var(--line); color:var(--ink);
+    padding:6px 10px; border-radius:100px; cursor:pointer;
+  }
+  .upload-btn:hover{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .remove-btn{ color:var(--coral-dark); border-color:rgba(196,67,43,0.4); }
+  .remove-btn:hover{ background:var(--coral-dark); color:#fff; }
+  input[type="file"]{ display:none; }
+
+  /* ---------- achievements ---------- */
+  .ach-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:14px;
+  }
+  .ach{
+    border:1px dashed var(--line); border-radius:var(--radius); padding:16px;
+    background:rgba(255,255,255,0.35);
+    opacity:0.55; filter:grayscale(0.6);
+    transition:opacity .3s ease, filter .3s ease, background .3s ease, transform .2s ease;
+  }
+  .ach.unlocked{
+    opacity:1; filter:none; background:var(--paper);
+    box-shadow:var(--shadow);
+  }
+  .ach .badge{ font-size:1.5rem; margin-bottom:8px; display:block; }
+  .ach h4{ font-family:'Baloo 2', sans-serif; font-size:0.95rem; margin:0 0 4px; }
+  .ach p{ font-size:0.78rem; color:rgba(1,124,116,0.65); margin:0; line-height:1.4;}
+  .ach .unlocked-tag{
+    display:none; font-family:'IBM Plex Mono', monospace; font-size:0.62rem;
+    color:var(--ink); text-transform:uppercase; letter-spacing:0.06em; margin-top:8px; font-weight:700;
+  }
+  .ach.unlocked .unlocked-tag{ display:inline-block; }
+
+  footer{ max-width:960px; margin:40px auto 0; padding:24px; text-align:center; }
+  footer p{ font-size:0.78rem; color:rgba(1,124,116,0.5); font-family:'IBM Plex Mono', monospace; }
+
+  /* ---------- sticky progress bar ---------- */
+  .progress-bar{
+    position:fixed; bottom:0; left:0; right:0; z-index:30;
+    background:var(--ink); color:var(--wash);
+    padding:12px 24px; display:flex; align-items:center; gap:16px;
+    box-shadow:0 -6px 18px rgba(0,0,0,0.15);
+  }
+  .progress-label{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; white-space:nowrap; }
+  .progress-track{
+    flex:1; height:10px; background:rgba(255,255,255,0.15); border-radius:100px; overflow:hidden;
+  }
+  .progress-fill{
+    height:100%; width:0%; border-radius:100px;
+    background:linear-gradient(90deg, var(--green), var(--yellow-dark));
+    transition:width .5s ease;
+  }
+  .progress-pct{ font-family:'IBM Plex Mono', monospace; font-size:0.8rem; font-weight:500; min-width:44px; text-align:right;}
+
+  /* ---------- toast ---------- */
+  #toast-wrap{
+    position:fixed; top:70px; right:16px; z-index:40; display:flex; flex-direction:column; gap:8px;
+  }
+  .toast{
+    background:var(--ink); color:var(--wash); padding:12px 16px; border-radius:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; box-shadow:var(--shadow);
+    max-width:260px; animation: slidein .25s ease;
+  }
+  @keyframes slidein{ from{ transform:translateX(20px); opacity:0;} to{ transform:translateX(0); opacity:1;} }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+  @media (max-width:520px){
+    .hero{ padding:44px 18px 28px; justify-content:center; text-align:center; }
+    .hero-text{ text-align:center; }
+    .hero p{ margin:0 auto; }
+    .hero-owl{ width:130px; margin:0 auto; }
+    .section{ padding:28px 18px 8px; }
+    .progress-bar{ padding:10px 14px; }
+    .progress-label{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="reset-btn" id="resetBtn">Reset progress</button>
+</div>
+
+<section class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Tennessee Aquarium field guide</span>
+    <h1>Chattanooga Aquarium Critter Guide</h1>
+    <p class="tagline"><em>Help stock the museum</em></p>
+    <p>Spot each creature on your tour through the aquarium, then check it off here and snap a photo. Every check-off is a donation to the museum.</p>
+  </div>
+  <img class="hero-owl" src="owl-curator.svg" alt="A friendly owl curator holding an open book" width="300" height="300">
+</section>
+
+<!-- ================= FISH ================= -->
+<section class="section" id="section-fish">
+  <div class="section-head">
+    <h2>River &amp; Ocean Fish</h2>
+    <span class="section-count mono" data-count-for="fish">0 / 7 donated</span>
+  </div>
+  <div class="grid" data-section="fish"></div>
+</section>
+
+<!-- ================= SEA CREATURES ================= -->
+<section class="section" id="section-sea">
+  <div class="section-head">
+    <h2>Sea Creatures</h2>
+    <span class="section-count mono" data-count-for="sea">0 / 3 donated</span>
+  </div>
+  <div class="grid" data-section="sea"></div>
+</section>
+
+<!-- ================= BUGS ================= -->
+<section class="section" id="section-bugs">
+  <div class="section-head">
+    <h2>Bugs</h2>
+    <span class="section-count mono" data-count-for="bugs">0 / 1 donated</span>
+  </div>
+  <div class="grid" data-section="bugs"></div>
+</section>
+
+<!-- ================= LOCALS ================= -->
+<section class="section" id="section-locals">
+  <div class="section-head">
+    <h2>Local Residents</h2>
+    <span class="section-count mono" data-count-for="locals">0 / 2 donated</span>
+  </div>
+  <div class="grid" data-section="locals"></div>
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+<section class="section" id="section-achievements">
+  <div class="section-head">
+    <h2>Achievements</h2>
+    <span class="section-count mono" id="ach-count">0 / 6 unlocked</span>
+  </div>
+  <div class="ach-grid" id="achGrid"></div>
+</section>
+
+<footer>
+  <p>Made for wandering the Tennessee Aquarium with a critter-spotting mindset. Your progress lives only in this browser.</p>
+</footer>
+
+<div class="progress-bar">
+  <span class="progress-label mono">OVERALL DONATION</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-pct mono" id="progressPct">0%</span>
+</div>
+
+<div id="toast-wrap"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  const CREATURES = [
+    { id:"arapaima",   name:"Arapaima",        section:"fish",  icon:"🐠",
+      fact:"One of the largest freshwater fish alive, the arapaima has to gulp air at the surface every few minutes because its gills alone aren't enough to keep it breathing." },
+    { id:"piranha",    name:"Piranha",         section:"fish",  icon:"🐟",
+      fact:"Piranhas have a fierce reputation, but most species are scavengers that stick together in shoals mainly to protect themselves from bigger predators." },
+    { id:"catfish",    name:"Catfish",         section:"fish",  icon:"🐡",
+      fact:"Catfish are covered in taste buds from head to tail, including on their whisker-like barbels, so they can 'taste' the water long before they see a meal." },
+    { id:"eel",        name:"Electric Eel",    section:"fish",
+      icon:'<svg viewBox="0 0 44 30" xmlns="http://www.w3.org/2000/svg"><path d="M3 15c4-10 10-10 14-4s6 10 10 4 8-10 12-4" fill="none" stroke="#017C74" stroke-width="3.2" stroke-linecap="round"/><circle cx="4" cy="13.5" r="1.6" fill="#017C74"/><path d="M33 5 L28 15 L32.5 15 L27 25 L37 13 L32.5 13 Z" fill="#F5C24C"/></svg>',
+      fact:"Despite the name, it's not a true eel — it's a knifefish that can discharge upwards of 600 volts to stun prey and read its surroundings in murky water." },
+    { id:"sturgeon",   name:"Sturgeon",        section:"fish",  icon:"🦈",
+      fact:"Sturgeon are living fossils whose lineage stretches back over 100 million years, and some individuals can live past the century mark." },
+    { id:"ray",        name:"Ray",             section:"fish",
+      icon:'<svg viewBox="0 0 40 34" xmlns="http://www.w3.org/2000/svg"><path d="M20 2 L36 17 L20 24 L4 17 Z" fill="#7CC9C3"/><path d="M20 24 L23 33" stroke="#017C74" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle cx="16" cy="15" r="1.3" fill="#017C74"/></svg>',
+      fact:"Rays breathe through small openings called spiracles just behind their eyes, letting them rest half-buried in sand without inhaling a mouthful of it." },
+    { id:"suckerfish", name:"Suckerfish",      section:"fish",  icon:"🐟",
+      fact:"Suckerfish like the hog sucker have downward-facing mouths built for scraping algae and tiny invertebrates straight off river-bottom rocks." },
+
+    { id:"octopus",    name:"Octopus",         section:"sea",   icon:"🐙",
+      fact:"An octopus runs on three hearts and blue, copper-based blood — and can squeeze its whole body through any gap bigger than its beak." },
+    { id:"jellyfish",  name:"Moon Jellyfish",  section:"sea",   icon:"🪼",
+      fact:"Moon jellyfish are roughly 95% water and don't so much swim as pulse their bell and drift wherever the current takes them." },
+    { id:"crab",       name:"Spider Crab",     section:"sea",   icon:"🦀",
+      fact:"The Japanese spider crab has the longest leg span of any arthropod on Earth — claw to claw, it can stretch close to 12 feet." },
+
+    { id:"butterfly",  name:"Butterfly",       section:"bugs",  icon:"🦋",
+      fact:"Butterflies taste with their feet, using chemoreceptors there to check whether a leaf is the right host plant before laying eggs on it." },
+
+    { id:"otter",      name:"Otter",           section:"locals",icon:"🦦",
+      fact:"River otters often hold hands while they sleep so the current doesn't drift them apart from each other." },
+    { id:"penguin",    name:"Penguin",         section:"locals",icon:"🐧",
+      fact:"Macaroni penguins are named after 18th-century 'Macaroni' fashion dandies, on account of their flashy golden crest feathers." },
+  ];
+
+  const SECTION_LABELS = { fish:"fish", sea:"sea", bugs:"bugs", locals:"locals" };
+
+  const ACHIEVEMENTS = [
+    { id:"first-catch", name:"First Catch", badge:"🥇",
+      desc:"Check off your very first creature.",
+      test: found => Object.values(found).some(Boolean) },
+    { id:"river-journey", name:"River Journey Complete", badge:"🐟",
+      desc:"Donate all 7 fish.",
+      test: found => CREATURES.filter(c=>c.section==="fish").every(c=>found[c.id]) },
+    { id:"ocean-journey", name:"Ocean Journey Complete", badge:"🌊",
+      desc:"Donate all 3 sea creatures.",
+      test: found => CREATURES.filter(c=>c.section==="sea").every(c=>found[c.id]) },
+    { id:"butterfly-garden", name:"Butterfly Garden", badge:"🦋",
+      desc:"Donate the butterfly.",
+      test: found => !!found["butterfly"] },
+    { id:"meet-locals", name:"Meet the Locals", badge:"🦦",
+      desc:"Donate the otter and the penguin.",
+      test: found => found["otter"] && found["penguin"] },
+    { id:"full-donation", name:"100% Donation", badge:"🏆",
+      desc:"Donate every creature in the guide.",
+      test: found => CREATURES.every(c=>found[c.id]) },
+  ];
+
+  const STORAGE_KEY = "tnaq-critterpedia-v1";
+  const DB_NAME = "tnaq-critterpedia-photos";
+  const STORE = "photos";
+
+  let state = loadState();
+  let db = null;
+
+  function loadState(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(raw) return JSON.parse(raw);
+    }catch(e){ console.warn("Could not read saved progress", e); }
+    return { found:{}, unlocked:[] };
+  }
+  function saveState(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+    catch(e){ console.warn("Could not save progress", e); }
+  }
+
+  // ---------- IndexedDB for photos ----------
+  function openDB(){
+    return new Promise((resolve,reject)=>{
+      const req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = ()=>{ req.result.createObjectStore(STORE); };
+      req.onsuccess = ()=> resolve(req.result);
+      req.onerror = ()=> reject(req.error);
+    });
+  }
+  function getPhoto(id){
+    return new Promise((resolve)=>{
+      if(!db) return resolve(null);
+      const tx = db.transaction(STORE,"readonly");
+      const r = tx.objectStore(STORE).get(id);
+      r.onsuccess = ()=> resolve(r.result || null);
+      r.onerror = ()=> resolve(null);
+    });
+  }
+  function setPhoto(id, dataUrl){
+    return new Promise((resolve,reject)=>{
+      if(!db) return reject("no db");
+      const tx = db.transaction(STORE,"readwrite");
+      tx.objectStore(STORE).put(dataUrl, id);
+      tx.oncomplete = ()=> resolve();
+      tx.onerror = ()=> reject(tx.error);
+    });
+  }
+  function deletePhoto(id){
+    return new Promise((resolve)=>{
+      if(!db) return resolve();
+      const tx = db.transaction(STORE,"readwrite");
+      tx.objectStore(STORE).delete(id);
+      tx.oncomplete = ()=> resolve();
+    });
+  }
+
+  function resizeImage(file){
+    return new Promise((resolve,reject)=>{
+      const img = new Image();
+      const reader = new FileReader();
+      reader.onload = e => { img.src = e.target.result; };
+      reader.onerror = reject;
+      img.onload = ()=>{
+        const maxW = 640;
+        const scale = Math.min(1, maxW/img.width);
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width*scale;
+        canvas.height = img.height*scale;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img,0,0,canvas.width,canvas.height);
+        resolve(canvas.toDataURL("image/jpeg", 0.82));
+      };
+      img.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ---------- rendering ----------
+  const grids = {
+    fish: document.querySelector('[data-section="fish"]'),
+    sea: document.querySelector('[data-section="sea"]'),
+    bugs: document.querySelector('[data-section="bugs"]'),
+    locals: document.querySelector('[data-section="locals"]'),
+  };
+
+  function cardTemplate(c){
+    const found = !!state.found[c.id];
+    const el = document.createElement("div");
+    el.className = "card" + (found ? " found" : "");
+    el.dataset.id = c.id;
+    el.innerHTML = `
+      <button class="card-toggle" style="all:unset; display:block; width:100%; cursor:pointer;" role="switch" aria-checked="${found}" aria-label="Mark ${c.name} as ${found ? 'not found' : 'found'}">
+        <div class="card-top">
+          <span class="icon-wrap">${c.icon}</span>
+          <span class="status-dot"></span>
+        </div>
+        <span class="tag">${c.section}</span>
+        <h3>${c.name}</h3>
+        <div class="status-label">${found ? "✓ Donated" : "Tap to donate"}</div>
+      </button>
+      <div class="detail">
+        <div class="detail-inner">
+          <p class="fun-fact">${c.fact}</p>
+          <div class="photo-zone" data-photo-zone="${c.id}"></div>
+        </div>
+      </div>
+    `;
+    el.querySelector(".card-toggle").addEventListener("click", (ev)=>{
+      ev.stopPropagation();
+      toggleFound(c.id);
+    });
+    return el;
+  }
+
+  function renderAll(){
+    Object.keys(grids).forEach(section=>{
+      grids[section].innerHTML = "";
+      CREATURES.filter(c=>c.section===section).forEach(c=>{
+        grids[section].appendChild(cardTemplate(c));
+      });
+    });
+    CREATURES.forEach(c => renderPhotoZone(c.id));
+    updateCounts();
+    renderAchievements();
+    updateProgress();
+  }
+
+  async function renderPhotoZone(id){
+    const zone = document.querySelector(`[data-photo-zone="${id}"]`);
+    if(!zone) return;
+    const found = !!state.found[id];
+    if(!found){ zone.innerHTML = ""; return; }
+    const photo = await getPhoto(id);
+    if(photo){
+      zone.innerHTML = `
+        <img class="photo-thumb" src="${photo}" alt="Your photo of this creature">
+        <button class="remove-btn" data-remove="${id}">Remove photo</button>
+      `;
+      zone.querySelector("[data-remove]").addEventListener("click", async (ev)=>{
+        ev.stopPropagation();
+        await deletePhoto(id);
+        renderPhotoZone(id);
+      });
+    }else{
+      zone.innerHTML = `
+        <label class="upload-btn">
+          Add a photo
+          <input type="file" accept="image/*" data-upload="${id}">
+        </label>
+      `;
+      zone.querySelector("[data-upload]").addEventListener("click", ev=> ev.stopPropagation());
+      zone.querySelector("[data-upload]").addEventListener("change", async (ev)=>{
+        const file = ev.target.files[0];
+        if(!file) return;
+        try{
+          const dataUrl = await resizeImage(file);
+          await setPhoto(id, dataUrl);
+          renderPhotoZone(id);
+        }catch(e){
+          console.warn("Photo upload failed", e);
+        }
+      });
+    }
+  }
+
+  function updateCounts(){
+    Object.keys(SECTION_LABELS).forEach(section=>{
+      const items = CREATURES.filter(c=>c.section===section);
+      const done = items.filter(c=>state.found[c.id]).length;
+      const el = document.querySelector(`[data-count-for="${section}"]`);
+      if(el) el.textContent = `${done} / ${items.length} donated`;
+    });
+  }
+
+  function updateProgress(){
+    const total = CREATURES.length;
+    const done = CREATURES.filter(c=>state.found[c.id]).length;
+    const pct = Math.round((done/total)*100);
+    document.getElementById("progressFill").style.width = pct + "%";
+    document.getElementById("progressPct").textContent = pct + "%";
+  }
+
+  function renderAchievements(){
+    const grid = document.getElementById("achGrid");
+    grid.innerHTML = "";
+    ACHIEVEMENTS.forEach(a=>{
+      const unlocked = state.unlocked.includes(a.id);
+      const el = document.createElement("div");
+      el.className = "ach" + (unlocked ? " unlocked" : "");
+      el.innerHTML = `
+        <span class="badge">${a.badge}</span>
+        <h4>${a.name}</h4>
+        <p>${a.desc}</p>
+        <span class="unlocked-tag mono">Unlocked</span>
+      `;
+      grid.appendChild(el);
+    });
+    document.getElementById("ach-count").textContent = `${state.unlocked.length} / ${ACHIEVEMENTS.length} unlocked`;
+  }
+
+  function checkAchievements(){
+    let newlyUnlocked = [];
+    ACHIEVEMENTS.forEach(a=>{
+      if(!state.unlocked.includes(a.id) && a.test(state.found)){
+        state.unlocked.push(a.id);
+        newlyUnlocked.push(a);
+      }
+    });
+    if(newlyUnlocked.length){
+      newlyUnlocked.forEach(a=> showToast(`🏆 Achievement unlocked — ${a.name}`));
+      renderAchievements();
+    }
+  }
+
+  function showToast(msg){
+    const wrap = document.getElementById("toast-wrap");
+    const t = document.createElement("div");
+    t.className = "toast";
+    t.textContent = msg;
+    wrap.appendChild(t);
+    setTimeout(()=>{ t.remove(); }, 3600);
+  }
+
+  function toggleFound(id){
+    state.found[id] = !state.found[id];
+    saveState();
+    const card = document.querySelector(`.card[data-id="${id}"]`);
+    if(card){
+      card.classList.toggle("found", state.found[id]);
+      const btn = card.querySelector(".card-toggle");
+      btn.setAttribute("aria-checked", state.found[id]);
+      card.querySelector(".status-label").textContent = state.found[id] ? "✓ Donated" : "Tap to donate";
+      renderPhotoZone(id);
+    }
+    updateCounts();
+    updateProgress();
+    checkAchievements();
+  }
+
+  document.getElementById("resetBtn").addEventListener("click", async ()=>{
+    if(!confirm("Reset all progress, achievements, and photos on this device? This can't be undone.")) return;
+    state = { found:{}, unlocked:[] };
+    saveState();
+    if(db){
+      const tx = db.transaction(STORE,"readwrite");
+      tx.objectStore(STORE).clear();
+    }
+    renderAll();
+  });
+
+  // ---------- init ----------
+  renderAll();
+  openDB().then(_db=>{ db = _db; renderAll(); }).catch(e=>{
+    console.warn("Photo storage unavailable in this browser", e);
+  });
+
+})();
+</script>
+</body>
+</html>
