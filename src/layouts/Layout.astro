@@ -6,13 +6,14 @@ export interface Props {
   description?: string;
 }
 
-const { title, description = "Join us to celebrate our wedding day." } = Astro.props;
+const { title, description = "Josiah and Sarah eloped! Help us celebrate with a gift toward our honeymoon." } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? pathname === '/' : pathname.startsWith(href);
 
 const navItems = [
+  { href: '/',           label: 'Home'      },
   { href: '/games',      label: 'Games'     },
   { href: '/registry',   label: 'Registry'  },
 ];
@@ -25,13 +26,13 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow" />
-    <title>{title} — Our Wedding</title>
+    <title>{title} — Josiah &amp; Sarah</title>
   </head>
   <body>
     <header class="site-header">
       <div class="container">
         <nav class="nav">
-          <a href="/games" class="nav-brand">
+          <a href="/" class="nav-brand">
             <span class="nav-brand-names">Josiah &amp; Sarah</span>
           </a>
           <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">

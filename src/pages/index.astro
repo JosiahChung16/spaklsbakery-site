@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home" description="Josiah and Sarah eloped! Help us celebrate with a gift toward our honeymoon.">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="section-label">Just Married</span>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <h1 class="hero-names">
+        Josiah<span class="hero-amp">&amp;</span>Sarah
+      </h1>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+      <p class="hero-date">We Eloped!</p>
+      <p class="hero-location">We decided to say "I do" just the two of us.</p>
+      <div class="hero-actions">
+        <a href="/registry" class="btn btn-filled">Honeymoon Fund</a>
+        <a href="/games" class="btn">Play Games</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PALETTE STRIP -->
+  <div class="palette-strip">
+    <div class="palette-swatch" style="background:#BED2BC"></div>
+    <div class="palette-swatch" style="background:#E4F0D8"></div>
+    <div class="palette-swatch" style="background:#C8BE8C"></div>
+    <div class="palette-swatch" style="background:#CAA869"></div>
+    <div class="palette-swatch" style="background:#B4924C"></div>
+    <div class="palette-swatch" style="background:#C08480"></div>
+    <div class="palette-swatch" style="background:#0F697D"></div>
+    <div class="palette-swatch" style="background:#485A4E"></div>
+    <div class="palette-swatch" style="background:#676453"></div>
+    <div class="palette-swatch" style="background:#494E3C"></div>
+  </div>
+
+  <!-- MESSAGE -->
+  <section class="section">
+    <div class="container">
+      <div class="message">
+        <span class="section-label">A Note From Us</span>
+        <h2>Thank You for Your Love</h2>
+        <div class="divider">
+          <div class="divider-line"></div>
+          <div class="divider-diamond"></div>
+          <div class="divider-line"></div>
+        </div>
+        <p>
+          After a lot of thought, we chose to make it official in a small, quiet way.
+          It was just right for us, and we are so happy to finally be married.
+          We're grateful for every one of you who has loved and supported us along the way.
+        </p>
+        <p>
+          We're not having a wedding celebration, but if you would like to send us off with a gift,
+          we would be thrilled to receive anything toward our honeymoon.
+        </p>
+        <a href="/registry" class="btn btn-filled">Give to Our Honeymoon</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--swan-white);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 1px solid var(--swan-sand);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 22px;
+    border: 1px dotted var(--swan-sage);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+  .hero-names {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    color: var(--swan-forest);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin: 0.5rem 0;
+  }
+  .hero-amp {
+    display: block;
+    font-size: 0.55em;
+    color: var(--swan-blush);
+    font-style: italic;
+    margin: 0.1em 0;
+  }
+  .hero-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--swan-brown);
+    margin-bottom: 0.2rem;
+  }
+  .hero-location {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--swan-olive);
+    margin-bottom: 2rem;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .palette-strip { display: flex; height: 8px; }
+  .palette-swatch { flex: 1; }
+
+  .message {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .message h2 { margin-bottom: 0.5rem; }
+  .message p {
+    color: var(--swan-brown);
+    font-size: 0.95rem;
+    margin: 1.2rem 0;
+  }
+  .message .btn { margin-top: 1rem; }
+</style>
